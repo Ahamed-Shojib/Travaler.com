@@ -1,6 +1,7 @@
 <?php
-include('conn.php');
+include('../conn.php');
 session_start();
+error_reporting(0);
 $fatch = $_SESSION['user_log']['email'];
 if(empty($_SESSION['user_log']))
 {
@@ -16,8 +17,10 @@ if(empty($_SESSION['user_log']))
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Traveler Dashboard</title>
+  <!-- Favicon -->
+  <link rel="icon" href="images/Tour-Logo.png">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../css/style.css">
 
   <!-- Bootstrap Link -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -34,17 +37,7 @@ if(empty($_SESSION['user_log']))
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
   <!-- Google Fonts -->
-  <style>
-    #book_success {
-      display: none;
-    }
-  </style>
-  <script>
-    function book_success_msg() {
-      var alert_id = document.getElementById("book_success");
-      alert_id.style.display = "block";
-    }
-  </script>
+
 
 </head>
 
@@ -58,30 +51,9 @@ if(empty($_SESSION['user_log']))
       </button>
       <div class="collapse navbar-collapse" id="mynavbar">
         <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="#home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#book">Book</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#packages">Packages</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#services">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#gallary">Gallary</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
 
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="text" placeholder="Search">
-          <button class="btn btn-outline-warning" type="button">Search</button>
-        </form>
+    
         <a class="btn btn-outline-danger mx-2 my-2" href="user_logout.php">Logout</a>
       </div>
     </div>
@@ -118,8 +90,9 @@ if(empty($_SESSION['user_log']))
                         // $already_sql = "SELECT locations,price,dates FROM avail_tour WHERE locations='$locations' AND price='$price' AND dates='dates'";
                         // $already_result = mysqli_query($conn,$already_sql);
 
-                        $sql = "INSERT INTO book(ticket_no,locations,seats,price,dates,email) VALUES ('$ticket_no','$location','$seat','$price','$date','$fatch')";
+                        $sql = "INSERT INTO book(ticket_no,locations,seats,total_price,dates,email) VALUES ('$ticket_no','$location','$seat','$price','$date','$fatch')";
                         $result = mysqli_query($conn,$sql);
+          
                 }
 
         ?>
@@ -127,7 +100,7 @@ if(empty($_SESSION['user_log']))
         <div class="row">
           <div class="col-md-8 py-3 py-md-0 mx-auto">
             <div class="book_area">
-              <form action="#" method="POST" >
+              <form action="#" method="POST">
                 <label class="my-2" for="location">Select a Destination:</label>
                 <select class="form-select" id="location" name="locations" required>
                   <?php 
@@ -154,8 +127,9 @@ if(empty($_SESSION['user_log']))
                 <label class="my-2" for="amount">Select Booking Date:</label>
                 <input type="date" name="dates" class="form-control" placeholder="Arrivals" required><br>
 
-                <input type="text" name="price" class="form-control" value="<?php echo $price ?> " readonly required>
-                <input type="submit" name="submit" value="Book Now" class="submit btn btn-outline-warning" onsubmit="book_success_msg()" required>
+                <!--<input type="text" name="price" class="form-control" value="<?php echo $price ?> " readonly>-->
+                <input type="submit" name="submit" value="Book Now" class="submit btn btn-outline-warning"
+                  onsubmit="book_success_msg()" required>
               </form>
             </div>
           </div>
@@ -216,7 +190,7 @@ if(empty($_SESSION['user_log']))
       <div class=" row available_tour my-3">
         <h4 class="text-danger my-3" style="font-family: Rubik Wet Paint;">Upcomming Tour :</h4>
         <?php 
-                    $sql = "SELECT * FROM avail_tour";
+                    $sql = "SELECT * FROM upcomming";
                     $result = mysqli_query($conn,$sql);
                     if(mysqli_num_rows($result) > 0){
                         while($tour_fatch = mysqli_fetch_assoc($result) ){
@@ -227,7 +201,7 @@ if(empty($_SESSION['user_log']))
                             $price = $tour_fatch['price'];  
                             $seats = $tour_fatch['seats'];                       
                 ?>
-        <div class="col-md-4 mx-auto">
+        <div class="col-md-4  my-3">
           <div class="card">
             <img
               src="https://img.freepik.com/premium-photo/young-people-together-planning-trip-europe-top-view-empty-white-space-notebook-where-you-time-plan-text-travel-concept_292052-1627.jpg"
@@ -269,6 +243,7 @@ if(empty($_SESSION['user_log']))
             <li><a href="view_profile.php">View Profile</a></li>
             <li><a href="update_profile.php">Edit Profile</a></li>
             <li><a href="#">Settings</a></li>
+            <li><a href="../select_seat.php">Transport</a></li>
             <li><a href="user_logout.php">Logout</a></li>
           </ul>
         </div>

@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+header {
+    background-image: url('https://images.pexels.com/photos/13010286/pexels-photo-13010286.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+header h1 {
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+section {
+    margin-bottom: 30px;
+}
+section h2 {
+    color: #333;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+    display: inline-block;
+}
+section p {
+    color: #555;
+    line-height: 1.6;
+}
+.activities ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 10px 0;
+}
+.activities ul li {
+    margin: 5px 0;
+    color: #333;
+}
+.specific-adventures {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.adventure-item {
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transform: scale(0.9);
+    transition: transform 0.3s ease-in-out;
+    animation: fadeInUp 0.8s ease-in-out;
+}
+.adventure-item:hover {
+    transform: scale(1);
+}
+.adventure-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.adventure-item h3 {
+    font-size: 1.5em;
+    color: #3498db;
+    margin: 10px;
+}
+.adventure-item p {
+    color: #555;
+    padding: 0 10px 10px;
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Footer Start */
+#footer {
+    width: 100%;
+    margin-top: 50px;
+    text-align: center;
+    background: #f9f9f9;
+}
+
+#footer h1 {
+    font-weight: 600;
+    padding-top: 30px;
+    text-shadow: 0px 0px 1px black;
+}
+
+#footer h1 span {
+    color: #ffa500;
+}
+
+.social-links i {
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 20px;
+    background: rgb(9, 65, 73);
+    color: white;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.social-links i:hover {
+    background: #ffa500;
+}
+
+/* Footer End */

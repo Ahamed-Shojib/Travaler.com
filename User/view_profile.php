@@ -1,6 +1,7 @@
 <?php
-include('conn.php');
+include('../conn.php');
 session_start();
+error_reporting(0);
 $fatch = $_SESSION['user_log']['email'];
 if(empty($_SESSION['user_log']))
 {
@@ -16,8 +17,10 @@ if(empty($_SESSION['user_log']))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Traveler Dashboard</title>
+    <!-- Favicon -->
+    <link rel="icon" href="images/Tour-Logo.png">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <!-- Bootstrap Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -46,30 +49,12 @@ if(empty($_SESSION['user_log']))
             </button>
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#book">Book</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#packages">Packages</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#gallary">Gallary</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-
+                    
                 </ul>
-                <form class="d-flex">
+                <!-- <form class="d-flex">
                     <input class="form-control me-2" type="text" placeholder="Search">
                     <button class="btn btn-outline-warning" type="button">Search</button>
-                </form>
+                </form> -->
                 <a class="btn btn-outline-danger mx-2 my-2" href="user_logout.php">Logout</a>
             </div>
         </div>
@@ -92,55 +77,6 @@ if(empty($_SESSION['user_log']))
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 mx-auto">
-                        <h5 class="text-success my-3" style="font-family: Rubik Wet Paint;">Personal Info : </h5>
-                        <hr>
-                    </div>
-                </div>
-                <div class="row my-3">
-                    <div class="col-md-6">
-                        <ul class="list-group">
-                            <li class="list-group-item"><strong>First Name :
-                                </strong><?php echo$_SESSION['user_log']['first_name'];?></li>
-                            <li class="list-group-item"><strong>Email :
-                                </strong><?php echo$_SESSION['user_log']['email'];?></li>
-                            <li class="list-group-item"><strong>User ID :
-                                </strong><?php echo$_SESSION['user_log']['t_id'];?></li>
-                            <li class="list-group-item"><strong>Date of Birth :
-                                </strong><?php echo$_SESSION['user_log']['dob'];?></li>
-
-                            <li class="list-group-item"><strong>Religion :
-                                </strong><?php echo$_SESSION['user_log']['religion'];?></li>
-                            <li class="list-group-item"><strong>Gender :
-                                </strong><?php echo$_SESSION['user_log']['gender'];?></li>
-                            <li class="list-group-item"><strong>Emergency Contact :
-                                </strong><?php echo$_SESSION['user_log']['gurdian_n'];?></li>
-                            <li class="list-group-item"><strong>Current Address :
-                                </strong><?php echo$_SESSION['user_log']['present_add'];?></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="list-group">
-                            <li class="list-group-item"><strong>Last Name :
-                                </strong><?php echo$_SESSION['user_log']['last_name'];?></li>
-                            <li class="list-group-item"><strong>Mobile :
-                                </strong><?php echo$_SESSION['user_log']['mobile'];?></li>
-                            <li class="list-group-item"><strong>Password :
-                                </strong><?php echo$_SESSION['user_log']['pass'];?></li>
-                            <li class="list-group-item"><strong>Nationality :
-                                </strong><?php echo$_SESSION['user_log']['nation'];?></li>
-                            <li class="list-group-item"><strong>Gender :
-                                </strong><?php echo$_SESSION['user_log']['gender'];?></li>
-                            <li class="list-group-item"><strong>Marital Status:
-                                </strong><?php echo$_SESSION['user_log']['marit'];?></li>
-                            <li class="list-group-item"><strong>Blood Group :
-                                </strong><?php echo$_SESSION['user_log']['blood'];?></li>
-                            <li class="list-group-item"><strong>Permanent Address :
-                                </strong><?php echo$_SESSION['user_log']['parmanent_add'];?></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 mx-auto">
                         <h5 class="text-success my-3" style="font-family: Rubik Wet Paint;">Booking Info : </h5>
                         <hr>
                     </div>
@@ -156,6 +92,7 @@ if(empty($_SESSION['user_log']))
                                     <th scope="col">Price(TK)</th>
                                     <th scope="col">Number of Ticket</th>
                                     <th scope="col">Ticket Number</th>
+                                    <th scope="col">Cancellation</th>
                                 </tr>
                             </thead>
                             <?php 
@@ -163,24 +100,23 @@ if(empty($_SESSION['user_log']))
                                 $result = mysqli_query($conn,$sql);
                                 if(mysqli_num_rows($result) > 0){
                                     while($tour_fatch = mysqli_fetch_assoc($result) ){
-                                        $tour_id = $tour_fatch['tour_id'];
-                                        $location = $tour_fatch['locations'];   
-                                        $date = $tour_fatch['dates'];  
-                                        $price = $tour_fatch['price'];  
-                                        $seats = $tour_fatch['seats'];
-                                        $ticket_num = $tour_fatch['ticket_no'];                        
-                            ?>
-                            <tbody>
-                                <tr class="text-center">
-                                    <th scope="row"><?php echo $tour_id?></th>
-                                    <td><?php echo $location?></td>
-                                    <td><?php echo $date?></td>
-                                    <td><?php echo $price?></td>
-                                    <td><?php echo $seats?></td>
-                                    <td><?php echo $ticket_num?></td>
-                                </tr>
-                            </tbody>
-                            <?php
+                                        $tour_id_dele = $_GET['id'];
+                                        $sql_del = "DELETE FROM book WHERE tour_id='$tour_id_dele'";
+                                        $del_data = mysqli_query($conn,$sql_del);
+
+                                        echo "
+                                        <tbody>
+                                            <tr class='text-center'>
+                                                <th scope='row'>".$tour_fatch['tour_id']."</th>
+                                                <td>".$tour_fatch['locations']."</td>
+                                                <td>".$tour_fatch['dates']."</td>
+                                                <td>".$tour_fatch['total_price']."</td>
+                                                <td>".$tour_fatch['seats']."</td>
+                                                <td>".$tour_fatch['ticket_no']."</td>
+                                                <td><a class='btn btn-outline-danger' href='view_profile.php?id=$tour_fatch[tour_id]'>Cancel</a></td>
+                                            </tr>
+                                        </tbody>
+                                        ";                        
           }
         }
       ?>
@@ -191,15 +127,65 @@ if(empty($_SESSION['user_log']))
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <h5 class="text-success my-3" style="font-family: Rubik Wet Paint;">Personal Info : </h5>
+                <hr>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-6">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>First Name :
+                        </strong><?php echo$_SESSION['user_log']['first_name'];?></li>
+                    <li class="list-group-item"><strong>Email :
+                        </strong><?php echo$_SESSION['user_log']['email'];?></li>
+                    <li class="list-group-item"><strong>User ID :
+                        </strong><?php echo$_SESSION['user_log']['t_id'];?></li>
+                    <li class="list-group-item"><strong>Date of Birth :
+                        </strong><?php echo$_SESSION['user_log']['dob'];?></li>
+
+                    <li class="list-group-item"><strong>Religion :
+                        </strong><?php echo$_SESSION['user_log']['religion'];?></li>
+                    <li class="list-group-item"><strong>Gender :
+                        </strong><?php echo$_SESSION['user_log']['gender'];?></li>
+                    <li class="list-group-item"><strong>Emergency Contact :
+                        </strong><?php echo$_SESSION['user_log']['gurdian_n'];?></li>
+                    <li class="list-group-item"><strong>Current Address :
+                        </strong><?php echo$_SESSION['user_log']['present_add'];?></li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Last Name :
+                        </strong><?php echo$_SESSION['user_log']['last_name'];?></li>
+                    <li class="list-group-item"><strong>Mobile :
+                        </strong><?php echo$_SESSION['user_log']['mobile'];?></li>
+                    <li class="list-group-item"><strong>Password :
+                        </strong><?php echo$_SESSION['user_log']['pass'];?></li>
+                    <li class="list-group-item"><strong>Nationality :
+                        </strong><?php echo$_SESSION['user_log']['nation'];?></li>
+                    <li class="list-group-item"><strong>Gender :
+                        </strong><?php echo$_SESSION['user_log']['gender'];?></li>
+                    <li class="list-group-item"><strong>Marital Status:
+                        </strong><?php echo$_SESSION['user_log']['marit'];?></li>
+                    <li class="list-group-item"><strong>Blood Group :
+                        </strong><?php echo$_SESSION['user_log']['blood'];?></li>
+                    <li class="list-group-item"><strong>Permanent Address :
+                        </strong><?php echo$_SESSION['user_log']['parmanent_add'];?></li>
+                </ul>
+            </div>
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="text-success" style="font-family: Rubik Wet Paint;">Quick Links</h1>
-                    <ul class="quick_link">
+                    <ul class="quick_link" style="font-weight:600;">
                         <li><a href="index.php">Back to Home</a></li>
+                        <li><a href="user_home.php">User Home</a></li>
                         <li><a href="#">View Profile</a></li>
                         <li><a href="update_profile.php">Edit Profile</a></li>
-                        <li><a href="#">Settings</a></li>
                         <li><a href="user_logout.php">Logout</a></li>
                     </ul>
                 </div>

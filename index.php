@@ -5,8 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Travel Website</title>
-
-  <link rel="stylesheet" href="style.css">
+  <!-- Favicon -->
+  <link rel="icon" href="images/Tour-Logo.png">
+  <link rel="stylesheet" href="css/style.css">
 
   <!-- Bootstrap Link -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -59,7 +60,7 @@
           <input class="form-control me-2" type="text" placeholder="Search">
           <button class="btn btn-outline-warning" type="button">Search</button>
         </form>
-        <a class="btn btn-outline-danger mx-2 my-2" href="user_login.php">Log
+        <a class="btn btn-outline-danger mx-2 my-2" href="User/user_login.php">Log
           In</a>
       </div>
     </div>
@@ -76,7 +77,8 @@
         that every trip you take is filled with joy and adventure. <br>If you
         have
         any questions or need assistance, our support team is always here to
-        help.</p>
+        help.
+      </p>
       <a class="btn btn-outline-warning" href="#book">Book Place</a>
     </div>
   </div>
@@ -103,17 +105,19 @@
             <form action="user_login.php">
               <label class="my-2" for="location">Select a Destination:</label>
               <select class="form-select" id="location" name="location" required>
-                <option value="United Kingdom">United Kingdom</option>
-                <option value="France">France</option>
-                <option value="Pakistan">Pakistan</option>
-                <option value="Italy">Italy</option>
-                <option value="United States">United States</option>
+                <option value="United Kingdom">Cox's Bazar</option>
+                <option value="France">Saintmartin</option>
+                <option value="Pakistan">Jaflong</option>
+                <option value="Italy">Shrimongol</option>
+                <option value="United States">Kolkata</option>
+                <option value="United States">Paris</option>
+                <option value="United States">Dubai</option>
               </select>
               <label class="my-2" for="amount">Select Booking Amount:</label>
               <input type="number" class="form-control" id="amount" value="1" required>
               <label class="my-2" for="amount">Select Booking Date:</label>
               <input type="date" class="form-control" placeholder="Arrivals" required><br>
-              <input type="text" class="form-control" readonly required>
+              <!--<input type="text" class="form-control" readonly required>-->
               <input type="submit" value="Book Now" class="submit btn btn-outline-warning" required>
             </form>
           </div>
@@ -153,6 +157,7 @@
               </div>
               <h6>Price: <strong>70K</strong></h6>
               <a class="btn btn-outline-warning" href="#book">Book Now</a>
+              <a class="btn btn-outline-success" href="location/UK.php">Visit Now</a>
             </div>
           </div>
 
@@ -176,6 +181,7 @@
               </div>
               <h6>Price: <strong>65K</strong></h6>
               <a class="btn btn-outline-warning" href="#book">Book Now</a>
+              <a class="btn btn-outline-success" href="location/France.php">Visit Now</a>
             </div>
           </div>
 
@@ -199,6 +205,7 @@
               </div>
               <h6>Price: <strong>50K</strong></h6>
               <a class="btn btn-outline-warning" href="#book">Book Now</a>
+              <a class="btn btn-outline-success" href="location/Pakistan.php">Visit Now</a>
             </div>
           </div>
 
@@ -227,6 +234,7 @@
               </div>
               <h6>Price: <strong>65K</strong></h6>
               <a class="btn btn-outline-warning" href="#book">Book Now</a>
+              <a class="btn btn-outline-success" href="location/Italy.php">Visit Now</a>
             </div>
           </div>
 
@@ -251,12 +259,12 @@
               </div>
               <h6>Price: <strong>45K</strong></h6>
               <a class="btn btn-outline-warning" href="#book">Book Now</a>
+              <a class="btn btn-outline-success" href="location/India.php">Visit Now</a>
             </div>
           </div>
 
         </div>
         <div class="col-md-4 py-3 py-md-0">
-
           <div class="card">
             <img src="./images/us.png" alt>
             <div class="card-body">
@@ -274,9 +282,9 @@
               </div>
               <h6>Price: <strong>80K</strong></h6>
               <a class="btn btn-outline-warning" href="#book">Book Now</a>
+              <a class="btn btn-outline-success" href="location/USA.php">Visit Now</a>
             </div>
           </div>
-
         </div>
 
       </div>
@@ -296,44 +304,45 @@
       <div class="row" style="margin-top: 30px;">
 
         <div class="col-md-4 py-3 py-md-0">
-
-          <div class="card">
-            <i class="fas fa-hotel"></i>
-            <div class="card-body">
-              <h3>Affordable Hotel</h3>
-              <p>Affordable hotels provide budget-friendly accommodation
-                options with essential amenities, catering to travelers
-                seeking comfortable stays without breaking the bank.</p>
+          <a style="text-decoration: none;color:black" href="#">
+            <div class="card">
+              <i class="fas fa-hotel"></i>
+              <div class="card-body">
+                <h3>Affordable Hotel</h3>
+                <p>Affordable hotels provide budget-friendly accommodation
+                  options with essential amenities, catering to travelers
+                  seeking comfortable stays without breaking the bank.</p>
+              </div>
             </div>
-          </div>
+          </a>
 
         </div>
         <div class="col-md-4 py-3 py-md-0">
-
-          <div class="card">
-            <i class="fas fa-utensils"></i>
-            <div class="card-body">
-              <h3>Food & Drinks</h3>
-              <p>Food and drink encompass a vast array of culinary delights,
-                from international cuisines to local specialties and
-                satisfying dining experiences.</p>
+          <a style="text-decoration: none;color:black" href="#">
+            <div class="card">
+              <i class="fas fa-utensils"></i>
+              <div class="card-body">
+                <h3>Food & Drinks</h3>
+                <p>Food and drink encompass a vast array of culinary delights,
+                  from international cuisines to local specialties and
+                  satisfying dining experiences.</p>
+              </div>
             </div>
-          </div>
-
+          </a>
         </div>
         <div class="col-md-4 py-3 py-md-0">
-
-          <div class="card">
-            <i class="fas fa-bullhorn"></i>
-            <div class="card-body">
-              <h3>Safty Guide</h3>
-              <p>Safety guides provide essential information for avoiding
-                hazards and responding effectively to
-                emergencies well-being in various
-                situations.</p>
+          <a style="text-decoration: none;color:black" href="#">
+            <div class="card">
+              <i class="fas fa-bullhorn"></i>
+              <div class="card-body">
+                <h3>Safty Guide</h3>
+                <p>Safety guides provide essential information for avoiding
+                  hazards and responding effectively to
+                  emergencies well-being in various
+                  situations.</p>
+              </div>
             </div>
-          </div>
-
+          </a>
         </div>
 
       </div>
@@ -341,43 +350,43 @@
       <div class="row" style="margin-top: 30px;">
 
         <div class="col-md-4 py-3 py-md-0">
-
-          <div class="card">
-            <i class="fas fa-globe-asia"></i>
-            <div class="card-body">
-              <h3>Around The World</h3>
-              <p>Around the world, diverse cultures, landscapes and people
-                offer interconnectedness on our
-                shared planet.</p>
+          <a style="text-decoration: none;color:black" href="#">
+            <div class="card">
+              <i class="fas fa-globe-asia"></i>
+              <div class="card-body">
+                <h3>Around The World</h3>
+                <p>Around the world, diverse cultures, landscapes and people
+                  offer interconnectedness on our
+                  shared planet.</p>
+              </div>
             </div>
-          </div>
-
+          </a>
         </div>
         <div class="col-md-4 py-3 py-md-0">
-
-          <div class="card">
-            <i class="fas fa-plane"></i>
-            <div class="card-body">
-              <h3>Fastest Travel</h3>
-              <p>The fastest mode of travel, air travel, enables rapid
-                transportation across vast distances with efficiently and
-                conveniently.</p>
+          <a style="text-decoration: none;color:black" href="#">
+            <div class="card">
+              <i class="fas fa-plane"></i>
+              <div class="card-body">
+                <h3>Fastest Travel</h3>
+                <p>The fastest mode of travel, air travel, enables rapid
+                  transportation across vast distances with efficiently and
+                  conveniently.</p>
+              </div>
             </div>
-          </div>
-
+          </a>
         </div>
         <div class="col-md-4 py-3 py-md-0">
-
-          <div class="card">
-            <i class="fas fa-hiking"></i>
-            <div class="card-body">
-              <h3>Adventures</h3>
-              <p>Adventures encompass thrilling experiences, from exploring
-                rugged, igniting curiosity, and creating unforgettable
-                memories.</p>
+          <a style="text-decoration: none;color:black" href="Activity/adventures.php">
+            <div class="card">
+              <i class="fas fa-hiking"></i>
+              <div class="card-body">
+                <h3>Adventures</h3>
+                <p>Adventures encompass thrilling experiences, from exploring
+                  rugged, igniting curiosity, and creating unforgettable
+                  memories.</p>
+              </div>
             </div>
-          </div>
-
+          </a>
         </div>
 
       </div>

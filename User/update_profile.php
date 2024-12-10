@@ -1,5 +1,5 @@
 <?php
-include('conn.php');
+include('../conn.php');
 session_start();
 $fatch = $_SESSION['user_log']['email'];
 // if(empty($_SESSION['user_log']))
@@ -41,8 +41,10 @@ if(isset($_POST['submit'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Traveler Dashboard</title>
+    <!-- Favicon -->
+    <link rel="icon" href="images/Tour-Logo.png">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <!-- Bootstrap Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -71,44 +73,28 @@ if(isset($_POST['submit'])){
             </button>
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#book">Book</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#packages">Packages</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#gallary">Gallary</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-
+                    
                 </ul>
-                <form class="d-flex">
+                <!-- <form class="d-flex">
                     <input class="form-control me-2" type="text" placeholder="Search">
                     <button class="btn btn-outline-warning" type="button">Search</button>
-                </form>
+                </form> -->
                 <a class="btn btn-outline-danger mx-2 my-2" href="user_logout.php">Logout</a>
             </div>
         </div>
     </nav>
     <!-- Navbar End -->
     <div class="container my-3" id="desh_area">
-        <div class="row">
-            <div class="col-md-12 mx-auto my-4 text-center">
-                <h1 style="padding:10px;font-family: Rubik Wet Paint;" class="text-warning">Hello
-                    <?php echo $_SESSION['user_log']['first_name'];?></h1>
-                <hr>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mx-auto my-4 text-center">
+                    <h1 style="padding:10px;font-family: Rubik Wet Paint;" class="text-warning">Hello
+                        <?php echo $_SESSION['user_log']['first_name'];?></h1>
+                    <hr>
+                </div>
             </div>
         </div>
-        <div id="container">
+        <div class="container">
 
 
             <form action="update_profile.php" method="POST">
@@ -135,7 +121,7 @@ if(isset($_POST['submit'])){
                 </div>
 
                 <!-- Personal Address-->
-                <div id="container">
+                <div class="container">
                     <h3 style="padding:10px;border-bottom:2px solid rgb(17, 143, 143);color:rgb(17, 143, 143);font-family: Rubik Wet Paint;"
                         class="my-3">
                         Basic Information</h3>
@@ -178,25 +164,46 @@ if(isset($_POST['submit'])){
                 <div class="text-center my-4">
                     <input class="btn btn-outline-success" type="submit" name="submit" value="Update Profile">
                     <label
-                        style="color:green;display:block;margin-left:15px;margin-top:10px;"><?php if(isset($_POST['submit'])){echo $update_mgs;}?></label>
+                        style="color:green;display:block;margin-left:15px;margin-top:10px;"><?php if(isset($_POST['submit'])){echo $update_mgs;}?>
+                    </label>
                 </div>
             </form>
             <div class="row">
                 <div class="col-md-12">
-                    <h2
-                        style="padding:10px;border-bottom:2px solid rgb(17, 143, 143);color:rgb(17, 143, 143);font-family: Rubik Wet Paint;">
-                        Quick Links</h2>
-                    <ul class="quick_link">
+                    <h1 class="text-success" style="font-family: Rubik Wet Paint;">Quick Links</h1>
+                    <ul class="quick_link" style="font-weight:600">
                         <li><a href="index.php">Back to Home</a></li>
+                        <li><a href="user_home.php">User Home</a></li>
                         <li><a href="view_profile.php">View Profile</a></li>
                         <li><a href="#">Edit Profile</a></li>
-                        <li><a href="#">Settings</a></li>
                         <li><a href="user_logout.php">Logout</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Footer Start -->
+   <footer id="footer">
+    <h1><span>T</span>ravaler</h1>
+    <p>Stay up-to-date with the latest travel news, trends, and tips through
+      our blog and newsletter.</p>
+    <div class="social-links">
+      <a href="https://www.facebook.com/ahamedshojib69"><i class="fa-brands fa-facebook"></i></a>
+      <a
+        href="https://www.linkedin.com/in/mehedi-hasan-shojib-645699249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i
+          class="fa-brands fa-linkedin"></i></a>
+      <a href="https://github.com/Ahamed-Shojib"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.youtube.com/channel/UCnqSrFTK2JLRhHWlPkVTTkw"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+    <!-- <div class="credit">
+        <p>Designed By <a href="https://github.com/Ahamed-Shojib">VallyNore
+            Coding</a></p>
+      </div> -->
+    <div class="copyright">
+      <p><sup>&copy;</sup> 2024 Copyright || All Rights Reserved</p>
+    </div>
+  </footer>
+  <!-- Footer End -->
 </body>
 
 </html>
