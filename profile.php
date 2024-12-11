@@ -57,12 +57,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- Date Picker -->
         <form method="GET" action="">
-            <div class="row " >
+            <div class="row ">
                 <div class="col-lg-8 col-md-4 col-sm-12 my-2">
-                    <input type="date" id="date" name="date" class="form-control" value="<?php echo $selected_date; ?>" required>
+                    <input type="date" id="date" name="date" class="form-control" value="<?php echo $selected_date; ?>"
+                        required>
                 </div>
                 <div class=" col-lg-4 col-md-6 col-sm-12 my-2">
-                    <button type="submit" class="btn btn-outline-primary d-block mx-auto">Show Available Transport</button>
+                    <button type="submit" class="btn btn-outline-primary d-block mx-auto">Show Available
+                        Transport</button>
                 </div>
             </div>
 
@@ -72,18 +74,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- Display available transport for selected date -->
         <?php if ($result->num_rows > 0) { ?>
-            <div class="row g-4">
-                <?php while ($row = $result->fetch_assoc()) { ?>
-                    <div class="col-md-4 my-4">
-                        <div class="card">
-                            <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Transport Image">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo ucfirst($row['type']); ?> Transport</h5>
-                                <p class="card-text">
-                                    <strong>Date:</strong> <?php echo $row['date']; ?><br>
-                                    <strong>Available Seats:</strong> <?php echo $row['available_seats']; ?>
-                                </p>
-                                <!-- <form action="seat_cart.php" method="POST">
+        <div class="row g-4">
+            <?php while ($row = $result->fetch_assoc()) { ?>
+            <div class="col-md-4 my-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Transport Image">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo ucfirst($row['type']); ?></h5>
+                        <p class="card-text">
+                            <strong>Date:</strong> <?php echo $row['date']; ?><br>
+                            <strong>Available Seats:</strong> <?php echo $row['available_seats']; ?><br>
+                            <strong>Vehicle
+                                Name:</strong> <?php echo $row['vehicle_name']; ?>
+                        </p>
+                        <!-- <form action="seat_cart.php" method="POST">
                                 <input type="hidden" name="transport_id" value="<?php echo $row['id']; ?>">
                                 <label for="seat_number">Select Seat:</label>
                                 <select class="form-select" name="seat_number" required>
@@ -95,14 +99,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </select>
                                 <button type="submit" class="btn btn-primary mt-2">Book Now</button>
                             </form> -->
-                                <a href="select_seat.php?transport_id=<?php echo $row['id']; ?>" class="btn btn-primary">Book Now</a>
-                            </div>
-                        </div>
+                        <a href="select_seat.php?transport_id=<?php echo $row['id']; ?>" class="btn btn-primary">Book
+                            Now</a>
                     </div>
-                <?php } ?>
+                </div>
             </div>
+            <?php } ?>
+        </div>
         <?php } else { ?>
-            <p>No available transport for the selected date.</p>
+        <p>No available transport for the selected date.</p>
         <?php } ?>
     </div>
 
