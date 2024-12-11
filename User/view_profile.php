@@ -1,12 +1,5 @@
 <?php
-include('../conn.php');
-session_start();
-error_reporting(0);
-$fatch = $_SESSION['user_log']['email'];
-if(empty($_SESSION['user_log']))
-{
-  header('location:user_home.php');
-}
+include('../re_use/session.php');
 ?>
 
 <!DOCTYPE html>
@@ -43,19 +36,19 @@ if(empty($_SESSION['user_log']))
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg" id="navbar">
         <div class="container" id="nav_bar">
-            <a class="navbar-brand" href="index.php" id="logo"><span>T</span>ravaler</a>
+            <a class="navbar-brand" href="../index.php" id="logo"><span>T</span>ravaler</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span><i class="fa-solid fa-bars"></i></span>
             </button>
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav me-auto">
-                    
+
                 </ul>
                 <!-- <form class="d-flex">
                     <input class="form-control me-2" type="text" placeholder="Search">
                     <button class="btn btn-outline-warning" type="button">Search</button>
                 </form> -->
-                <a class="btn btn-outline-danger mx-2 my-2" href="user_logout.php">Logout</a>
+                <a class="btn btn-outline-danger mx-2 my-2" href="logout.php">Logout</a>
             </div>
         </div>
     </nav>
@@ -64,7 +57,7 @@ if(empty($_SESSION['user_log']))
         <div class="row">
             <div class="col-md-12 mx-auto my-4 text-center">
                 <h1 style="font-family: Rubik Wet Paint;" class="text-warning">Hello
-                    <?php echo $_SESSION['user_log']['first_name'];?></h1>
+                    <?php echo $user['first_name'];?></h1>
                 <hr>
                 <h4 style="font-family: Rubik Wet Paint;" class="text-warning text-center"> </h4>
             </div>
@@ -138,42 +131,42 @@ if(empty($_SESSION['user_log']))
             <div class="col-md-6">
                 <ul class="list-group">
                     <li class="list-group-item"><strong>First Name :
-                        </strong><?php echo$_SESSION['user_log']['first_name'];?></li>
+                        </strong><?php echo $user['first_name'];?></li>
                     <li class="list-group-item"><strong>Email :
-                        </strong><?php echo$_SESSION['user_log']['email'];?></li>
+                        </strong><?php echo $user['email'];?></li>
                     <li class="list-group-item"><strong>User ID :
-                        </strong><?php echo$_SESSION['user_log']['t_id'];?></li>
+                        </strong><?php echo $user['id'];?></li>
                     <li class="list-group-item"><strong>Date of Birth :
-                        </strong><?php echo$_SESSION['user_log']['dob'];?></li>
+                        </strong><?php echo $user['dob'];?></li>
 
                     <li class="list-group-item"><strong>Religion :
-                        </strong><?php echo$_SESSION['user_log']['religion'];?></li>
+                        </strong><?php echo $user['religion'];?></li>
                     <li class="list-group-item"><strong>Gender :
-                        </strong><?php echo$_SESSION['user_log']['gender'];?></li>
+                        </strong><?php echo $user['gender'];?></li>
                     <li class="list-group-item"><strong>Emergency Contact :
-                        </strong><?php echo$_SESSION['user_log']['gurdian_n'];?></li>
+                        </strong><?php echo $user['gurdian_n'];?></li>
                     <li class="list-group-item"><strong>Current Address :
-                        </strong><?php echo$_SESSION['user_log']['present_add'];?></li>
+                        </strong><?php echo $user['present_add'];?></li>
                 </ul>
             </div>
             <div class="col-md-6">
                 <ul class="list-group">
                     <li class="list-group-item"><strong>Last Name :
-                        </strong><?php echo$_SESSION['user_log']['last_name'];?></li>
+                        </strong><?php echo $user['last_name'];?></li>
                     <li class="list-group-item"><strong>Mobile :
-                        </strong><?php echo$_SESSION['user_log']['mobile'];?></li>
+                        </strong><?php echo $user['mobile'];?></li>
                     <li class="list-group-item"><strong>Password :
-                        </strong><?php echo$_SESSION['user_log']['pass'];?></li>
+                        </strong><?php echo $user['password'];?></li>
                     <li class="list-group-item"><strong>Nationality :
-                        </strong><?php echo$_SESSION['user_log']['nation'];?></li>
+                        </strong><?php echo $user['nation'];?></li>
                     <li class="list-group-item"><strong>Gender :
-                        </strong><?php echo$_SESSION['user_log']['gender'];?></li>
+                        </strong><?php echo $user['gender'];?></li>
                     <li class="list-group-item"><strong>Marital Status:
-                        </strong><?php echo$_SESSION['user_log']['marit'];?></li>
+                        </strong><?php echo $user['marit'];?></li>
                     <li class="list-group-item"><strong>Blood Group :
-                        </strong><?php echo$_SESSION['user_log']['blood'];?></li>
+                        </strong><?php echo $user['blood'];?></li>
                     <li class="list-group-item"><strong>Permanent Address :
-                        </strong><?php echo$_SESSION['user_log']['parmanent_add'];?></li>
+                        </strong><?php echo $user['parmanent_add'];?></li>
                 </ul>
             </div>
         </div>
@@ -186,7 +179,7 @@ if(empty($_SESSION['user_log']))
                         <li><a href="user_home.php">User Home</a></li>
                         <li><a href="#">View Profile</a></li>
                         <li><a href="update_profile.php">Edit Profile</a></li>
-                        <li><a href="user_logout.php">Logout</a></li>
+                        <li><a href="logout.php">Logout</a></li>
                     </ul>
                 </div>
             </div>

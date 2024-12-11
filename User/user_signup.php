@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
   $confirm_password = $_POST['confirm_password'];
   $uniq_id = mt_rand(100, 1000);
 
-  $sql = " INSERT INTO user_info(t_id,first_name,last_name,email,pass,mobile) VALUES ('$uniq_id','$firstName','$lastName','$email','$new_password','$phone')";
+  $sql = " INSERT INTO users(id,first_name,last_name,email,password,mobile) VALUES ('$uniq_id','$firstName','$lastName','$email','$new_password','$phone')";
   if(($new_password == $confirm_password)){
     $conn->query($sql);
     $Insert_msg = " Data Inserted Successfully!";
@@ -60,10 +60,10 @@ if(isset($_POST['submit'])){
             </button>
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav me-auto">
-                    
+
 
                 </ul>
-                
+
                 <a class="btn btn-outline-danger mx-2 my-2" href="user_login.php">Log
                     In</a>
             </div>
@@ -127,27 +127,27 @@ if(isset($_POST['submit'])){
         </div>
     </div>
     <!-- Footer Start -->
-   <footer id="footer">
-    <h1><span>T</span>ravaler</h1>
-    <p>Stay up-to-date with the latest travel news, trends, and tips through
-      our blog and newsletter.</p>
-    <div class="social-links">
-      <a href="https://www.facebook.com/ahamedshojib69"><i class="fa-brands fa-facebook"></i></a>
-      <a
-        href="https://www.linkedin.com/in/mehedi-hasan-shojib-645699249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i
-          class="fa-brands fa-linkedin"></i></a>
-      <a href="https://github.com/Ahamed-Shojib"><i class="fa-brands fa-github"></i></a>
-      <a href="https://www.youtube.com/channel/UCnqSrFTK2JLRhHWlPkVTTkw"><i class="fa-brands fa-youtube"></i></a>
-    </div>
-    <!-- <div class="credit">
+    <footer id="footer">
+        <h1><span>T</span>ravaler</h1>
+        <p>Stay up-to-date with the latest travel news, trends, and tips through
+            our blog and newsletter.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/ahamedshojib69"><i class="fa-brands fa-facebook"></i></a>
+            <a
+                href="https://www.linkedin.com/in/mehedi-hasan-shojib-645699249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i
+                    class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/Ahamed-Shojib"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.youtube.com/channel/UCnqSrFTK2JLRhHWlPkVTTkw"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <!-- <div class="credit">
         <p>Designed By <a href="https://github.com/Ahamed-Shojib">VallyNore
             Coding</a></p>
       </div> -->
-    <div class="copyright">
-      <p><sup>&copy;</sup> 2024 Copyright || All Rights Reserved</p>
-    </div>
-  </footer>
-  <!-- Footer End -->
+        <div class="copyright">
+            <p><sup>&copy;</sup> 2024 Copyright || All Rights Reserved</p>
+        </div>
+    </footer>
+    <!-- Footer End -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
     </script>

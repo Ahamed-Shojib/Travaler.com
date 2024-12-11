@@ -1,3 +1,19 @@
+<?php
+session_start();
+$user_first_name = ''; // Default value
+if (isset($_SESSION['user_id'])) {
+  $user_id = $_SESSION['user_id'];
+  // Fetch user first name from database based on user_id
+  $conn = new mysqli('localhost', 'root', '', 'travel');
+  $result = $conn->query("SELECT first_name FROM users WHERE id='$user_id'");
+  $user = $result->fetch_assoc();
+  if ($user) {
+    $user_first_name = $user['first_name'];
+  }
+  $conn->close();
+}
+?>
+
 <html lang="en">
 
 <head>
@@ -54,14 +70,22 @@
           <li class="nav-item">
             <a class="nav-link" href="#about">About</a>
           </li>
-
+          <?php if(!empty($user_first_name)): ?>
+          <li class="nav-item">
+            <a class="nav-link" href="User/view_profile.php">Profile</a>
+          </li>
+          <?php endif; ?>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="text" placeholder="Search">
           <button class="btn btn-outline-warning" type="button">Search</button>
         </form>
-        <a class="btn btn-outline-danger mx-2 my-2" href="User/user_login.php">Log
-          In</a>
+        <?php if(!empty($user_first_name)): ?>
+        <span class="navbar-text mx-2">Hi, <?php echo $user_first_name; ?></span>
+        <a class="btn btn-outline-danger mx-2 my-2" href="User/logout.php">Logout</a>
+        <?php else: ?>
+        <a class="btn btn-outline-danger mx-2 my-2" href="User/user_login.php">Log In</a>
+        <?php endif; ?>
       </div>
     </div>
   </nav>
@@ -102,7 +126,7 @@
 
         <div class="col-md-6 py-3 py-md-0">
           <div class="book_area">
-            <form action="user_login.php">
+            <form action="Cart.php">
               <label class="my-2" for="location">Select a Destination:</label>
               <select class="form-select" id="location" name="location" required>
                 <option value="United Kingdom">Cox's Bazar</option>
@@ -115,10 +139,16 @@
               </select>
               <label class="my-2" for="amount">Select Booking Amount:</label>
               <input type="number" class="form-control" id="amount" value="1" required>
-              <label class="my-2" for="amount">Select Booking Date:</label>
+              <label class="my-2" for="date">Select Booking Date:</label>
               <input type="date" class="form-control" placeholder="Arrivals" required><br>
-              <!--<input type="text" class="form-control" readonly required>-->
-              <input type="submit" value="Book Now" class="submit btn btn-outline-warning" required>
+
+              <?php
+              if (isset($_SESSION['user_id'])) {
+                echo '<input type="submit" value="Book Now" class="submit btn btn-outline-warning" required>';
+              } else {
+                echo '<a class="btn btn-outline-danger mx-2 my-2" href="User/user_login.php">Log In</a>';
+              }
+              ?>
             </form>
           </div>
         </div>
@@ -127,6 +157,7 @@
     </div>
   </section>
   <!-- Section Book End -->
+
 
   <!-- Section Packages Start -->
   <section class="packages" id="packages">

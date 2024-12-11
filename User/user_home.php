@@ -1,12 +1,31 @@
 <?php
-include('../conn.php');
-session_start();
+//include('../conn.php');
+//session_start();
 error_reporting(0);
-$fatch = $_SESSION['user_log']['email'];
-if(empty($_SESSION['user_log']))
-{
-  header('location:user_home.php');
+
+session_start();
+$conn = new mysqli('localhost', 'root', '', 'travel');
+
+// Check if user is logged in by verifying the session
+if (!isset($_SESSION['user_id'])) {
+    // Redirect to login page if no session exists
+    header('location:index.php');
+    exit;
 }
+
+// Fetch user details from the database using the user ID
+$user_id = $_SESSION['user_id'];
+$result = $conn->query("SELECT * FROM users WHERE id = $user_id");
+
+// Check if user exists in the database
+if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+} else {
+    // Redirect to login page if user does not exist
+    header('location:index.php');
+    exit;
+}
+$fatch = $user['email'];
 ?>
 
 <!DOCTYPE html>
@@ -45,15 +64,14 @@ if(empty($_SESSION['user_log']))
   <!-- Navbar Start -->
   <nav class="navbar navbar-expand-lg" id="navbar">
     <div class="container" id="nav_bar">
-      <a class="navbar-brand" href="index.php" id="logo"><span>T</span>ravaler</a>
+      <a class="navbar-brand" href="../index.php" id="logo"><span>T</span>ravaler</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
         <span><i class="fa-solid fa-bars"></i></span>
       </button>
       <div class="collapse navbar-collapse" id="mynavbar">
-        <ul class="navbar-nav me-auto">
-
-        </ul>
-    
+        <ul class="navbar-nav me-auto"></ul>
+        <!-- Display User First Name in Navbar -->
+        <span class="navbar-text mx-2">Hello, <?php echo $user['first_name']; ?>!</span>
         <a class="btn btn-outline-danger mx-2 my-2" href="user_logout.php">Logout</a>
       </div>
     </div>
@@ -229,9 +247,9 @@ if(empty($_SESSION['user_log']))
         <div class="col">
           <h2 class="text-success my-3" style="font-family: Rubik Wet Paint;">Recent Activities</h2>
           <ul>
-            <li>Log in User : <?php echo$_SESSION['user_log']['first_name'];?></li>
-            <li>User Email : <?php echo$_SESSION['user_log']['email'];?></li>
-            <li>User Phone : <?php echo$_SESSION['user_log']['mobile'];?></li>
+            <li>Log in User : <?php echo $user['first_name'];?></li>
+            <li>User Email : <?php echo $user['email'];?></li>
+            <li>User Phone : <?php echo $user['mobile'];?></li>
           </ul>
         </div>
       </div>

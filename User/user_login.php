@@ -1,27 +1,25 @@
 <?php
+ini_set('display_errors', 0);
+
 session_start();
-require('../conn.php');
+$conn = new mysqli('localhost', 'root', '', 'travel');
+if (isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-if(isset($_POST['submit'])){
+    $result = $conn->query("SELECT * FROM users WHERE email='$email'  AND password = '$password'");
+    $user = $result->fetch_assoc();
 
-  $email     = $_POST['mail'];
-  $password = $_POST['password'];
-
-    $sql= "SELECT * FROM user_info WHERE email = '$email' AND pass= '$password'";
-    $query = $conn->query($sql);
-
-  if($query -> num_rows > 0)
-  {
-      $compar = $query-> FETCH_ASSOC();
-      $_SESSION['user_log'] = $compar;
-      header('location:user_home.php');
-  }
-  else{
-    $error_mgs = "Wrong Combination !";
-  }
+    if ($user['email']) {
+        $_SESSION['user_id'] = $user['id'];
+        header('location:user_home.php');
+    } else {
+        $error_mgs = "Wrong Combination !";
+    }
 }
 ?>
 
+</html>
 <!DOCTYPE html>
 <html>
 
@@ -55,14 +53,10 @@ if(isset($_POST['submit'])){
   <!-- Navbar Start -->
   <nav class="navbar navbar-expand-lg" id="navbar">
     <div class="container" id="nav_bar">
-      <a class="navbar-brand" href="index.php" id="logo"><span>T</span>ravaler</a>
+      <a class="navbar-brand" href="../index.php" id="logo"><span>T</span>ravaler</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
         <span><i class="fa-solid fa-bars"></i></span>
       </button>
-      <div class="collapse navbar-collapse" id="mynavbar">
-        <ul class="navbar-nav me-auto"></ul>
-        <a class="btn btn-outline-danger mx-2 my-2" href="user_login.php">Log In</a>
-      </div>
     </div>
   </nav>
   <!-- Navbar End -->
@@ -75,7 +69,7 @@ if(isset($_POST['submit'])){
           </div>
           <form action="#" method="post">
             <label class="my-2" for="mail">Email :</label>
-            <input class="form-control" type="email" name="mail" id="mail" placeholder="exmaple@mail.com">
+            <input class="form-control" type="email" name="email" id="mail" placeholder="exmaple@mail.com">
             <label class="my-2" for="password">Password
               :</label><br>
             <input class="form-control" type="password" name="password" id="password" placeholder="* * * * * * * * *">
