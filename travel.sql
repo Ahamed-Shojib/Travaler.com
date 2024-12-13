@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2024 at 06:01 AM
+-- Generation Time: Dec 12, 2024 at 05:51 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -98,7 +98,18 @@ INSERT INTO `book` (`tour_id`, `locations`, `dates`, `total_price`, `seats`, `ti
 (76, 'Darjeeling', '2024-06-18', 30000, 2, 602087, 'ali@gmail.com'),
 (77, 'Cox Bazar', '2024-06-25', 5000, 1, 298594, 'ali@gmail.com'),
 (78, 'Cox Bazar', '2024-06-27', 10000, 2, 659985, 'mehedi@gmail.com'),
-(79, 'Cox Bazar', '2024-06-21', 5000, 1, 597877, 'rana@gmail.com');
+(79, 'Cox Bazar', '2024-06-21', 5000, 1, 597877, 'rana@gmail.com'),
+(80, 'Cox Bazar', '2024-12-19', 5000, 1, 867943, ''),
+(81, 'Cox Bazar', '2024-12-19', 5000, 1, 803418, ''),
+(82, 'Cox Bazar', '2024-12-19', 5000, 1, 822815, ''),
+(83, 'Cox Bazar', '2024-12-14', 5000, 1, 864482, ''),
+(84, 'Cox Bazar', '2024-12-01', 5000, 1, 551320, ''),
+(85, 'Cox Bazar', '2024-12-20', 5000, 1, 630761, ''),
+(86, 'Cox Bazar', '2024-12-01', 5000, 1, 612037, ''),
+(87, 'Cox Bazar', '2024-12-01', 5000, 1, 748350, 'ab@gmail.com'),
+(88, 'Cox Bazar', '2024-12-20', 5000, 1, 108085, 'ab@gmail.com'),
+(89, 'Cox Bazar', '2024-12-01', 5000, 1, 960328, 'ab@gmail.com'),
+(90, 'Cox Bazar', '2024-12-05', 10000, 2, 289398, 'ahamed@yahoo.com');
 
 --
 -- Triggers `book`
@@ -161,6 +172,67 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bookings`
+--
+
+CREATE TABLE `bookings` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `transport_id` int(11) NOT NULL,
+  `seat_number` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `services`
+--
+
+CREATE TABLE `services` (
+  `id` int(11) NOT NULL,
+  `TYPE` enum('Bus','Plane','Car') NOT NULL,
+  `NAME` varchar(100) NOT NULL,
+  `capacity` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `services`
+--
+
+INSERT INTO `services` (`id`, `TYPE`, `NAME`, `capacity`, `created_at`) VALUES
+(2, 'Plane', 'Boeing 747', 300, '2024-12-02 09:59:26'),
+(3, 'Car', 'Sedan', 4, '2024-12-02 09:59:26'),
+(4, 'Bus', 'City Bus', 50, '2024-12-02 10:00:46'),
+(5, 'Plane', 'Boeing 747', 300, '2024-12-02 10:00:46'),
+(6, 'Car', 'Sedan', 4, '2024-12-02 10:00:46');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transport`
+--
+
+CREATE TABLE `transport` (
+  `id` int(11) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `date` date NOT NULL,
+  `available_seats` int(11) NOT NULL,
+  `vehicle_type` varchar(10) NOT NULL,
+  `vehicle_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transport`
+--
+
+INSERT INTO `transport` (`id`, `type`, `date`, `available_seats`, `vehicle_type`, `vehicle_name`) VALUES
+(9, 'Car', '2024-12-21', 14, '', ''),
+(10, 'Plane', '2024-12-15', 13, 'Economy', 'US Bangla');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `upcomming`
 --
 
@@ -185,11 +257,45 @@ INSERT INTO `upcomming` (`tour_id`, `locations`, `details`, `dates`, `price`, `s
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `dob` date DEFAULT NULL,
+  `mobile` varchar(20) NOT NULL,
+  `nation` text NOT NULL,
+  `gender` text NOT NULL,
+  `religion` text NOT NULL,
+  `blood` varchar(5) NOT NULL,
+  `marit` text NOT NULL,
+  `gurdian_n` varchar(20) NOT NULL,
+  `present_add` varchar(100) NOT NULL,
+  `parmanent_add` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `dob`, `mobile`, `nation`, `gender`, `religion`, `blood`, `marit`, `gurdian_n`, `present_add`, `parmanent_add`) VALUES
+(1, 'ahamed', '123@abc', 'Hasan', '', 'ab@gmail.com', NULL, '01634260670', '', '', '', '', '', '', '', ''),
+(2, 'shojib', '1234', 'Mehedi', '', 'uy@gmail.com', NULL, '01771260670', '', '', '', '', '', '', '', ''),
+(423, '', '1234', 'Ahamed', 'Shojib', 'ahamed@yahoo.com', NULL, '01634260678', '', '', '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_info`
 --
 
 CREATE TABLE `user_info` (
-  `t_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `first_name` varchar(15) NOT NULL,
   `last_name` varchar(10) NOT NULL,
   `email` varchar(30) NOT NULL,
@@ -210,7 +316,7 @@ CREATE TABLE `user_info` (
 -- Dumping data for table `user_info`
 --
 
-INSERT INTO `user_info` (`t_id`, `first_name`, `last_name`, `email`, `pass`, `dob`, `nation`, `mobile`, `gender`, `religion`, `blood`, `marit`, `gurdian_n`, `present_add`, `parmanent_add`) VALUES
+INSERT INTO `user_info` (`id`, `first_name`, `last_name`, `email`, `pass`, `dob`, `nation`, `mobile`, `gender`, `religion`, `blood`, `marit`, `gurdian_n`, `present_add`, `parmanent_add`) VALUES
 (106, 'Ahamed', 'Shojib', 'shojib@gmail.com', '12345', '2001-01-04', 'Bangladeshi', '01771260670', 'Male', 'Islam', 'B+', 'Unmarit', '01892346342', 'Uttara,Dhaka', 'Jamalpur'),
 (263, 'Mehedi', 'Hasan', 'mehedi@gmail.com', '12345', '2001-01-04', 'Bangladeshi', '01634260670', 'Male', 'Islam', 'B+', 'N/A', '01771260670', 'Uttara,Dhaka', 'Jamalpur'),
 (351, 'Asraf', 'Ali', 'ali@gmail.com', '12345', '2023-11-14', 'Indian', '0163426373', 'Male', 'Islam', 'A+', 'Marit', '0147333333', 'Motijhill,Dhaka', 'West Bangel'),
@@ -239,16 +345,42 @@ ALTER TABLE `book`
   ADD PRIMARY KEY (`tour_id`);
 
 --
+-- Indexes for table `bookings`
+--
+ALTER TABLE `bookings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `transport_id` (`transport_id`);
+
+--
+-- Indexes for table `services`
+--
+ALTER TABLE `services`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `transport`
+--
+ALTER TABLE `transport`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `upcomming`
 --
 ALTER TABLE `upcomming`
   ADD PRIMARY KEY (`tour_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`,`email`,`mobile`);
+
+--
 -- Indexes for table `user_info`
 --
 ALTER TABLE `user_info`
-  ADD PRIMARY KEY (`t_id`,`mobile`,`email`) USING BTREE;
+  ADD PRIMARY KEY (`id`,`mobile`,`email`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -264,7 +396,42 @@ ALTER TABLE `admin_info`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `tour_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `tour_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+
+--
+-- AUTO_INCREMENT for table `bookings`
+--
+ALTER TABLE `bookings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `services`
+--
+ALTER TABLE `services`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `transport`
+--
+ALTER TABLE `transport`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=424;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `bookings`
+--
+ALTER TABLE `bookings`
+  ADD CONSTRAINT `bookings_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `bookings_ibfk_2` FOREIGN KEY (`transport_id`) REFERENCES `transport` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

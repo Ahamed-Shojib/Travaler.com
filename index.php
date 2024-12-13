@@ -158,7 +158,7 @@ if (isset($_SESSION['user_id'])) {
   </section>
   <!-- Section Book End -->
 
-
+  <?php require('./location/bangladesh.php'); ?>
   <!-- Section Packages Start -->
   <section class="packages" id="packages">
     <div class="container">
@@ -341,8 +341,8 @@ if (isset($_SESSION['user_id'])) {
               <div class="card-body">
                 <h3>Affordable Hotel</h3>
                 <p>Affordable hotels provide budget-friendly accommodation
-                  options with essential amenities, catering to travelers
-                  seeking comfortable stays without breaking the bank.</p>
+                  options with essential amenities, catering to travelers.
+                </p>
               </div>
             </div>
           </a>
@@ -400,8 +400,7 @@ if (isset($_SESSION['user_id'])) {
               <div class="card-body">
                 <h3>Fastest Travel</h3>
                 <p>The fastest mode of travel, air travel, enables rapid
-                  transportation across vast distances with efficiently and
-                  conveniently.</p>
+                  transportation across vast distances.</p>
               </div>
             </div>
           </a>
@@ -413,8 +412,7 @@ if (isset($_SESSION['user_id'])) {
               <div class="card-body">
                 <h3>Adventures</h3>
                 <p>Adventures encompass thrilling experiences, from exploring
-                  rugged, igniting curiosity, and creating unforgettable
-                  memories.</p>
+                  rugged, igniting curiosity.</p>
               </div>
             </div>
           </a>

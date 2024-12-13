@@ -136,9 +136,8 @@ include('../re_use/session.php');
                         </strong><?php echo $user['email'];?></li>
                     <li class="list-group-item"><strong>User ID :
                         </strong><?php echo $user['id'];?></li>
-                    <li class="list-group-item"><strong>Date of Birth :
-                        </strong><?php echo $user['dob'];?></li>
-
+                    <li class="list-group-item"><strong>Password :
+                        </strong><?php echo $user['password'];?></li>
                     <li class="list-group-item"><strong>Religion :
                         </strong><?php echo $user['religion'];?></li>
                     <li class="list-group-item"><strong>Gender :
@@ -155,8 +154,8 @@ include('../re_use/session.php');
                         </strong><?php echo $user['last_name'];?></li>
                     <li class="list-group-item"><strong>Mobile :
                         </strong><?php echo $user['mobile'];?></li>
-                    <li class="list-group-item"><strong>Password :
-                        </strong><?php echo $user['password'];?></li>
+                    <li class="list-group-item"><strong>Date of Birth :
+                        </strong><?php echo $user['dob'];?></li>
                     <li class="list-group-item"><strong>Nationality :
                         </strong><?php echo $user['nation'];?></li>
                     <li class="list-group-item"><strong>Gender :

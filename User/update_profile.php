@@ -1,7 +1,7 @@
 <?php
-include('../conn.php');
-session_start();
-$fatch = $_SESSION['user_log']['email'];
+include('../re_use/session.php');
+// session_start();
+// $fatch = $_SESSION['user_log']['email'];
 // if(empty($_SESSION['user_log']))
 // {
 //   header('location:user_home.php');
@@ -23,7 +23,7 @@ if(isset($_POST['submit'])){
    $parmament_add = $_POST['parmament_add'];
 
    /**/
-            $sql = "UPDATE user_info SET  email ='$email', mobile ='$mobile',dob ='$dob', pass='$pass', mobile ='$mobile', gender ='$gender', religion ='$religion', nation ='$nation', blood ='$blood', marit ='$marit', gurdian_n='$gurdian_n', present_add ='$present_add', parmanent_add ='$parmament_add' WHERE email='$fatch'";
+            $sql = "UPDATE users SET  email ='$email', mobile ='$mobile',dob ='$dob', password='$pass', mobile ='$mobile', gender ='$gender', religion ='$religion', nation ='$nation', blood ='$blood', marit ='$marit', gurdian_n='$gurdian_n', present_add ='$present_add', parmanent_add ='$parmament_add' WHERE email= '$fatch_email' ";
             $query = mysqli_query($conn,$sql);
             $update_mgs = "Congratulation! Profile Updated.";
 
@@ -73,7 +73,7 @@ if(isset($_POST['submit'])){
             </button>
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav me-auto">
-                    
+
                 </ul>
                 <!-- <form class="d-flex">
                     <input class="form-control me-2" type="text" placeholder="Search">
@@ -89,7 +89,7 @@ if(isset($_POST['submit'])){
             <div class="row">
                 <div class="col-md-12 mx-auto my-4 text-center">
                     <h1 style="padding:10px;font-family: Rubik Wet Paint;" class="text-warning">Hello
-                        <?php echo $_SESSION['user_log']['first_name'];?></h1>
+                        <?php echo $fatch_first_name;?></h1>
                     <hr>
                 </div>
             </div>
@@ -105,17 +105,15 @@ if(isset($_POST['submit'])){
                     <div class="row">
                         <div class="col-md-6">
                             <label for="first_name" class="my-2">First Name : </label><input class="form-control"
-                                type="text" name="first_name" value="<?php echo $_SESSION['user_log']['first_name'];?>"
-                                disabled>
+                                type="text" name="first_name" value="<?php echo $fatch_first_name;?>" disabled>
                             <label for="email" class="my-2">Email : </label><input class="form-control" type="text"
-                                name="email" value="<?php echo $_SESSION['user_log']['email'];?>" disabled>
+                                name="email" value="<?php echo $fatch_email;?>" disabled>
                         </div>
                         <div class="col-md-6">
                             <label for="last_name" class="my-2">Last Name : </label><input class="form-control"
-                                type="text" name="last_name" value="<?php echo $_SESSION['user_log']['last_name'];?>"
-                                disabled>
+                                type="text" name="last_name" value="<?php echo $fatch_last_name;?>" disabled>
                             <label for="mobile" class="my-2">Mobile : </label><input class="form-control" type="text"
-                                name="mobile" value="<?php echo $_SESSION['user_log']['mobile'];?>" disabled>
+                                name="mobile" value="<?php echo $fatch_mobile;?>" disabled>
                         </div>
                     </div>
                 </div>
@@ -128,36 +126,34 @@ if(isset($_POST['submit'])){
                     <div class="row">
                         <div class="col-md-6">
                             <label for="mail" class="my-2 ml-2">Email : </label><input class="form-control" type="mail"
-                                name="email" value="<?php echo $_SESSION['user_log']['email'];?>">
+                                name="email" value="<?php echo $fatch_email;?>">
                             <label for="dob" class="my-2 ml-2">Password : </label><input class="form-control"
-                                type="text" name="pass" value="<?php echo $_SESSION['user_log']['pass'];?>">
+                                type="text" name="pass" value="<?php echo $fatch_password;?>">
 
                             <label for="gender" class="my-2 ml-2">Gender : </label><input class="form-control"
-                                type="text" name="gender" value="<?php echo $_SESSION['user_log']['gender'];?>">
+                                type="text" name="gender" value="<?php echo $fatch_gender;?>">
                             <label for="religion" class="my-2 ml-2">Religion : </label><input class="form-control"
-                                type="text" name="religion" value="<?php echo $_SESSION['user_log']['religion'];?>">
+                                type="text" name="religion" value="<?php echo $fatch_religion;?>">
                             <label for="matrial_status" class="my-2 ml-2">Matrial Status : </label><input
-                                class="form-control" type="text" name="marit"
-                                value="<?php echo $_SESSION['user_log']['marit'];?>">
+                                class="form-control" type="text" name="marit" value="<?php echo $fatch_marit;?>">
                             <label for="present_add" class="my-2 ml-2">Current Address : </label><input
                                 class="form-control" type="text" name="present_add"
-                                value="<?php echo $_SESSION['user_log']['present_add'];?>">
+                                value="<?php echo $fatch_present_add;?>">
                         </div>
                         <div class="col-md-6">
                             <label for="mobile" class="my-2 ml-2">Mobile Number : </label><input class="form-control"
-                                type="text" name="mobile" value="<?php echo $_SESSION['user_log']['mobile'];?>">
+                                type="text" name="mobile" value="<?php echo $fatch_mobile;?>">
                             <label for="dob" class="my-2 ml-2">Date of Birth : </label><input class="form-control"
-                                type="date" name="dob" value="<?php echo $_SESSION['user_log']['dob'];?>">
+                                type="date" name="dob" value="<?php echo $fatch_dob;?>">
                             <label for="blood" class="my-2 ml-2">Blood Group : </label><input class="form-control"
-                                type="text" name="blood" value="<?php echo $_SESSION['user_log']['blood'];?>">
+                                type="text" name="blood" value="<?php echo $fatch_blood;?>">
                             <label for="nation" class="my-2 ml-2">Nationality : </label><input class="form-control"
-                                type="text" name="nation" value="<?php echo $_SESSION['user_log']['nation'];?>">
+                                type="text" name="nation" value="<?php echo $fatch_nation;?>">
                             <label for="gurdian_n" class="my-2 ml-2">Emergency Number : </label><input
-                                class="form-control" type="text" name="gurdian_n"
-                                value="<?php echo $_SESSION['user_log']['gurdian_n'];?>">
+                                class="form-control" type="text" name="gurdian_n" value="<?php echo $fatch_gurdian;?>">
                             <label for="parmament_address" class="my-2 ml-2">Parmament Address : </label><input
                                 class="form-control" type="text" name="parmament_add"
-                                value="<?php echo $_SESSION['user_log']['parmanent_add'];?>">
+                                value="<?php echo $fatch_parmanent_add;?>">
                         </div>
                     </div>
                 </div>
@@ -183,27 +179,27 @@ if(isset($_POST['submit'])){
         </div>
     </div>
     <!-- Footer Start -->
-   <footer id="footer">
-    <h1><span>T</span>ravaler</h1>
-    <p>Stay up-to-date with the latest travel news, trends, and tips through
-      our blog and newsletter.</p>
-    <div class="social-links">
-      <a href="https://www.facebook.com/ahamedshojib69"><i class="fa-brands fa-facebook"></i></a>
-      <a
-        href="https://www.linkedin.com/in/mehedi-hasan-shojib-645699249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i
-          class="fa-brands fa-linkedin"></i></a>
-      <a href="https://github.com/Ahamed-Shojib"><i class="fa-brands fa-github"></i></a>
-      <a href="https://www.youtube.com/channel/UCnqSrFTK2JLRhHWlPkVTTkw"><i class="fa-brands fa-youtube"></i></a>
-    </div>
-    <!-- <div class="credit">
+    <footer id="footer">
+        <h1><span>T</span>ravaler</h1>
+        <p>Stay up-to-date with the latest travel news, trends, and tips through
+            our blog and newsletter.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/ahamedshojib69"><i class="fa-brands fa-facebook"></i></a>
+            <a
+                href="https://www.linkedin.com/in/mehedi-hasan-shojib-645699249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i
+                    class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/Ahamed-Shojib"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.youtube.com/channel/UCnqSrFTK2JLRhHWlPkVTTkw"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <!-- <div class="credit">
         <p>Designed By <a href="https://github.com/Ahamed-Shojib">VallyNore
             Coding</a></p>
       </div> -->
-    <div class="copyright">
-      <p><sup>&copy;</sup> 2024 Copyright || All Rights Reserved</p>
-    </div>
-  </footer>
-  <!-- Footer End -->
+        <div class="copyright">
+            <p><sup>&copy;</sup> 2024 Copyright || All Rights Reserved</p>
+        </div>
+    </footer>
+    <!-- Footer End -->
 </body>
 
 </html>
