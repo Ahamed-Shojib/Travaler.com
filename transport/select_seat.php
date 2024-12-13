@@ -1,5 +1,5 @@
 <?php
-session_start();
+include('../re_use/session_user_name.php');
 // $fatch = $_SESSION['user_log'];
 // if (empty($_SESSION['user_log'])) {
 //     header('location:user_home.php');
@@ -59,9 +59,30 @@ $total_seats = 32; // Example for bus/plane/car
             background-color: #D3D3D3;
         }
     </style>
+    <?php
+    include('../re_use/links.php');
+    ?>
 </head>
 
 <body>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg" id="navbar">
+        <div class="container" id="nav_bar">
+            <a class="navbar-brand" href="../index.php" id="logo"><span>T</span>ravaler</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span><i class="fa-solid fa-bars"></i></span>
+            </button>
+        </div>
+        <div style="text-align: right;" class="collapse navbar-collapse" id="mynavbar">
+            <?php if (!empty($user_first_name)): ?>
+            <span class="navbar-text mx-2">Hi, <?php echo $user_first_name; ?></span>
+            <a class="btn btn-outline-danger mx-2 my-2" href="../User/logout.php">Logout</a>
+            <?php else: ?>
+            <a class="btn btn-outline-primary mx-2 my-2" href="../User/user_login.php">Log In</a>
+            <?php endif; ?>
+        </div>
+    </nav>
+    <!-- Navbar End -->
     <div class="container my-3">
         <h3 class="text-center">Select Seats</h3>
         <form action="seat_cart.php" method="POST">
@@ -88,7 +109,9 @@ $total_seats = 32; // Example for bus/plane/car
 
         </form>
     </div>
-
+    <?php
+    include('../re_use/footer.php');
+    ?>
     <script>
         // Optional: Add dynamic behavior to reset the "selected" state when the reset button is clicked
         const resetButton = document.querySelector('button[type="reset"]');

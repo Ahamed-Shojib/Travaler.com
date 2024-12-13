@@ -28,22 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>India Travel Details</title>
-  <!-- Favicon -->
-  <link rel="icon" href="images/Tour-Logo.png">
-
-  <!-- Bootstrap Link -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    crossorigin="anonymous">
-
-  <!-- Font Awesome Cdn -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/StyleX.css">
+  <?php
+    include('../re_use/links.php');
+    ?>
 </head>
 
 <body>
@@ -113,46 +100,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
             Cart</a></button>
       </div>
     </form>
+  </div>
+  <!-- Initially hidden message <div id="cart_msg" class="alert alert-success" role="alert" style="display: none;">
+    echo $add_message; ?>
+  </div>
 
-    <!-- Initially hidden message
-          <div id="cart_msg" class="alert alert-success" role="alert" style="display: none;">
-              echo $add_message; ?>
-          </div>
+  <script>
+    document.getElementById('addToCartButton').onclick = function () {
+      // Show the cart message
+      document.getElementById('cart_msg').style.display = 'block';
 
-          <script>
-          document.getElementById('addToCartButton').onclick = function() {
-            // Show the cart message
-            document.getElementById('cart_msg').style.display = 'block';
-            
-            // Optionally, you can also submit the form here if needed
-            // document.querySelector('form').submit();
-          };
+      // Optionally, you can also submit the form here if needed
+      // document.querySelector('form').submit();
+    };
+  </script> -->
 
-          </script> -->
-
-    <!-- View Cart Button
+  <!-- View Cart Button
               <div class="view-cart">
                 <a href="cart.php" class="btn btn-lg btn-success">View Cart</a>
               </div>
             </div> -->
-
-    <!-- Footer Start -->
-    <footer id="footer">
-      <h1>
-        <span id="logo_T">T</span>ravaler
-      </h1>
-      <p>Stay up-to-date with the latest travel news...</p>
-      <div class="social-links">
-        <a href="https://www.facebook.com/ahamedshojib69"><i class="fa-brands fa-facebook"></i></a>
-        <a href="https://www.linkedin.com/in/mehedi-hasan-shojib"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="https://github.com/Ahamed-Shojib"><i class="fa-brands fa-github"></i></a>
-        <a href="https://www.youtube.com/channel/UCnqSrFTK2JLRhHWlPkVTTkw"><i class="fa-brands fa-youtube"></i></a>
-      </div>
-      <div class="copyright">
-        <p><sup>&copy;</sup> 2024 Copyright || All Rights Reserved</p>
-      </div>
-    </footer>
-    <!-- Footer End -->
+  <!-- Footer Start -->
+  <?php
+    include('../re_use/footer.php');
+    ?>
+  <!-- Footer End -->
 
 </body>
 

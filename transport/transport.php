@@ -8,8 +8,8 @@ if ($conn->connect_error) {
 // Add Transport
 if (isset($_POST['add_transport'])) {
     $type = $_POST['type'];
-    $vehicle_type = $_POST['vehicle_type']; 
-    $vehicle_name = $_POST['vehicle_name']; 
+    $vehicle_type = $_POST['vehicle_type'];
+    $vehicle_name = $_POST['vehicle_name'];
     $date = $_POST['date'];
     $seats = $_POST['available_seats'];
 
@@ -46,9 +46,30 @@ $result = $conn->query("SELECT * FROM transport ORDER BY date ASC");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transport Service</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <?php
+    include('../re_use/links.php');
+    ?>
 </head>
 
 <body>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg" id="navbar">
+        <div class="container" id="nav_bar">
+            <a class="navbar-brand" href="../index.php" id="logo"><span>T</span>ravaler</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span><i class="fa-solid fa-bars"></i></span>
+            </button>
+        </div>
+        <div style="text-align: right;" class="collapse navbar-collapse" id="mynavbar">
+            <?php if (!empty($user_first_name)): ?>
+            <span class="navbar-text mx-2">Hi, <?php echo $user_first_name; ?></span>
+            <a class="btn btn-outline-danger mx-2 my-2" href="../User/logout.php">Logout</a>
+            <?php else: ?>
+            <a class="btn btn-outline-primary mx-2 my-2" href="../User/user_login.php">Log In</a>
+            <?php endif; ?>
+        </div>
+    </nav>
+    <!-- Navbar End -->
     <div class="container mt-5">
         <h2 class="mb-4">Transport Service Management</h2>
 
@@ -102,7 +123,8 @@ $result = $conn->query("SELECT * FROM transport ORDER BY date ASC");
                             <b> Vehicle Type: </b> <?php echo htmlspecialchars($row['vehicle_type']); ?>
                         </p>
                         <p class="card-text">
-                            <b>Date: </b> <?php echo htmlspecialchars($row['date']); ?> </p>
+                            <b>Date: </b> <?php echo htmlspecialchars($row['date']); ?>
+                        </p>
                         <p class="card-text">
                             <b> Available Seats: </b><?php echo htmlspecialchars($row['available_seats']); ?>
                         </p>
@@ -113,6 +135,11 @@ $result = $conn->query("SELECT * FROM transport ORDER BY date ASC");
             <?php } ?>
         </div>
     </div>
+
+    <?php
+    include('../re_use/footer.php');
+    ?>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

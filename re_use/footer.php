@@ -1,6 +1,12 @@
-<!-- Footer Start -->
+<?php
+echo '<!-- Font Awesome Cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<!-- Font Awesome Cdn -->
+<!--Footer Start -->
 <footer id="footer">
-    <h1><span>T</span>ravaler</h1>
+    <h1>
+        <span id="logo_T">T</span>ravaler
+    </h1>
     <p>Stay up-to-date with the latest travel news, trends, and tips through
         our blog and newsletter.</p>
     <div class="social-links">
@@ -19,4 +25,5 @@
         <p><sup>&copy;</sup> 2024 Copyright || All Rights Reserved</p>
     </div>
 </footer>
-<!-- Footer End -->
+<!-- Footer End -->';
+?>

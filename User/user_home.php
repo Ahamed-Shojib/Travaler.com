@@ -1,9 +1,8 @@
 <?php
 //include('../conn.php');
 //session_start();
+include('../re_use/session_user_name.php');
 error_reporting(0);
-
-session_start();
 $conn = new mysqli('localhost', 'root', '', 'travel');
 
 // Check if user is logged in by verifying the session
@@ -36,27 +35,9 @@ $fatch = $user['email'];
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Traveler Dashboard</title>
-  <!-- Favicon -->
-  <link rel="icon" href="images/Tour-Logo.png">
-
-  <link rel="stylesheet" href="../css/style.css">
-
-  <!-- Bootstrap Link -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <!-- Bootstrap Link -->
-
-  <!-- Font Awesome Cdn -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-  <!-- Font Awesome Cdn -->
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
-  <!-- Google Fonts -->
-
+  <?php
+    include('../re_use/links.php');
+    ?>
 
 </head>
 
@@ -68,12 +49,14 @@ $fatch = $user['email'];
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
         <span><i class="fa-solid fa-bars"></i></span>
       </button>
-      <div class="collapse navbar-collapse" id="mynavbar">
-        <ul class="navbar-nav me-auto"></ul>
-        <!-- Display User First Name in Navbar -->
-        <span class="navbar-text mx-2">Hello, <?php echo $user['first_name']; ?>!</span>
-        <a class="btn btn-outline-danger mx-2 my-2" href="user_logout.php">Logout</a>
-      </div>
+    </div>
+    <div style="text-align: right;" class="collapse navbar-collapse" id="mynavbar">
+      <?php if (!empty($user_first_name)): ?>
+      <span class="navbar-text mx-2">Hi, <?php echo $user_first_name; ?></span>
+      <a class="btn btn-outline-danger mx-2 my-2" href="../User/logout.php">Logout</a>
+      <?php else: ?>
+      <a class="btn btn-outline-primary mx-2 my-2" href="../User/user_login.php">Log In</a>
+      <?php endif; ?>
     </div>
   </nav>
   <!-- Navbar End -->
@@ -261,14 +244,16 @@ $fatch = $user['email'];
             <li><a href="view_profile.php">View Profile</a></li>
             <li><a href="update_profile.php">Edit Profile</a></li>
             <li><a href="#">Settings</a></li>
-            <li><a href="../select_seat.php">Transport</a></li>
+            <li><a href="../transport/transport_gate.php">Transport</a></li>
             <li><a href="user_logout.php">Logout</a></li>
           </ul>
         </div>
       </div>
     </div>
   </div>
-
+  <?php
+  include('../re_use/footer.php');
+  ?>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
   </script>
