@@ -1,24 +1,23 @@
 <?php
+include('session_user_name.php');
 // Start the session to manage the cart
-session_start();
-
 // Check if the cart is initialized
 if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = [];
+  $_SESSION['cart'] = [];
 }
 
 // Add to cart functionality
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
-    $item = [
-        'name' => 'India Tour',
-        'price' => $_POST['price'],
-        'quantity' => 1 // Default quantity is 1 for now
-    ];
+  $item = [
+    'name' => 'India Tour',
+    'price' => $_POST['price'],
+    'quantity' => 1 // Default quantity is 1 for now
+  ];
 
-    // Add the item to the cart
-    $_SESSION['cart'][] = $item;
-    $add_message = "Cart Added";
-    echo $add_message;
+  // Add the item to the cart
+  $_SESSION['cart'][] = $item;
+  $add_message = "Cart Added";
+  echo $add_message;
 }
 
 ?>
@@ -57,7 +56,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
       </button>
     </div>
     <div style="text-align: right;" class="collapse navbar-collapse" id="mynavbar">
-      <a class="btn btn-outline-primary mx-2 my-2" href="user_login.php">Log In</a>
+      <?php if (!empty($user_first_name)): ?>
+      <span class="navbar-text mx-2">Hi, <?php echo $user_first_name; ?></span>
+      <a class="btn btn-outline-danger mx-2 my-2" href="../User/logout.php">Logout</a>
+      <?php else: ?>
+      <a class="btn btn-outline-primary mx-2 my-2" href="../User/user_login.php">Log In</a>
+      <?php endif; ?>
     </div>
   </nav>
   <!-- Navbar End -->
@@ -111,26 +115,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
     </form>
 
     <!-- Initially hidden message
-<div id="cart_msg" class="alert alert-success" role="alert" style="display: none;">
-     echo $add_message; ?>
-</div>
+          <div id="cart_msg" class="alert alert-success" role="alert" style="display: none;">
+              echo $add_message; ?>
+          </div>
 
-<script>
-document.getElementById('addToCartButton').onclick = function() {
-  // Show the cart message
-  document.getElementById('cart_msg').style.display = 'block';
-  
-  // Optionally, you can also submit the form here if needed
-  // document.querySelector('form').submit();
-};
+          <script>
+          document.getElementById('addToCartButton').onclick = function() {
+            // Show the cart message
+            document.getElementById('cart_msg').style.display = 'block';
+            
+            // Optionally, you can also submit the form here if needed
+            // document.querySelector('form').submit();
+          };
 
-</script> -->
+          </script> -->
 
     <!-- View Cart Button
-    <div class="view-cart">
-      <a href="cart.php" class="btn btn-lg btn-success">View Cart</a>
-    </div>
-  </div> -->
+              <div class="view-cart">
+                <a href="cart.php" class="btn btn-lg btn-success">View Cart</a>
+              </div>
+            </div> -->
 
     <!-- Footer Start -->
     <footer id="footer">

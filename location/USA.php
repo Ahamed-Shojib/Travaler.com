@@ -1,45 +1,55 @@
+<?php
+include('session_user_name.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>USA Travel Details</title>
-   <!-- Favicon -->
-    <link rel="icon" href="images/Tour-Logo.png">
+  <!-- Favicon -->
+  <link rel="icon" href="images/Tour-Logo.png">
 
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/StyleX.css">
 
-    <!-- Bootstrap Link -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- Bootstrap Link -->
+  <!-- Bootstrap Link -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Bootstrap Link -->
 
-    <!-- Font Awesome Cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <!-- Font Awesome Cdn -->
+  <!-- Font Awesome Cdn -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <!-- Font Awesome Cdn -->
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
-    <!-- Google Fonts -->
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
 </head>
+
 <body>
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg" id="navbar">
-        <div class="container" id="nav_bar">
-            <a class="navbar-brand" href="../index.php" id="logo"><span>T</span>ravaler</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span><i class="fa-solid fa-bars"></i></span>
-            </button>
-        </div>
-        <div style="text-align: right;" class="collapse navbar-collapse" id="mynavbar">
-            <a class="btn btn-outline-danger mx-2 my-2" href="user_login.php">Log In</a>
-        </div>
-    </nav>
-    <!-- Navbar End -->
+  <!-- Navbar Start -->
+  <nav class="navbar navbar-expand-lg" id="navbar">
+    <div class="container" id="nav_bar">
+      <a class="navbar-brand" href="../index.php" id="logo"><span>T</span>ravaler</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span><i class="fa-solid fa-bars"></i></span>
+      </button>
+    </div>
+    <div style="text-align: right;" class="collapse navbar-collapse" id="mynavbar">
+      <?php if (!empty($user_first_name)): ?>
+      <span class="navbar-text mx-2">Hi, <?php echo $user_first_name; ?></span>
+      <a class="btn btn-outline-danger mx-2 my-2" href="../User/logout.php">Logout</a>
+      <?php else: ?>
+      <a class="btn btn-outline-primary mx-2 my-2" href="../User/user_login.php">Log In</a>
+      <?php endif; ?>
+    </div>
+  </nav>
+  <!-- Navbar End -->
   <!-- Header Section -->
   <header class="head_img_USA">
     <h1>Explore USA</h1>
@@ -50,7 +60,11 @@
     <!-- Info Section -->
     <section class="info">
       <h2>About USA</h2>
-      <p>The United States of America offers a diverse range of attractions, from iconic landmarks like the Statue of Liberty and Golden Gate Bridge to natural wonders such as Yellowstone National Park. Explore bustling cities like New York, Los Angeles, and Chicago, or take a scenic road trip through the Grand Canyon, Rocky Mountains, or along the Pacific Coast. Enjoy world-class museums, vibrant cultural festivals, and incredible cuisine from coast to coast.</p>
+      <p>The United States of America offers a diverse range of attractions, from iconic landmarks like the Statue of
+        Liberty and Golden Gate Bridge to natural wonders such as Yellowstone National Park. Explore bustling cities
+        like New York, Los Angeles, and Chicago, or take a scenic road trip through the Grand Canyon, Rocky Mountains,
+        or along the Pacific Coast. Enjoy world-class museums, vibrant cultural festivals, and incredible cuisine from
+        coast to coast.</p>
     </section>
 
     <!-- Map Section -->
@@ -58,8 +72,7 @@
       <h2>Location</h2>
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31551070.509361878!2d-124.78440762195248!3d37.2757098432076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5495a0d5c106b49f%3A0xe5bb62d808cd94cb!2sUnited%20States!5e0!3m2!1sen!2s!4v1699467409422!5m2!1sen!2s"
-        allowfullscreen
-        loading="lazy">
+        allowfullscreen loading="lazy">
       </iframe>
     </section>
 
@@ -89,11 +102,11 @@
 
     <!-- Booking Button -->
     <div class="book-now">
-    <button><a href="checkout.php?price=<?php echo $price?>">Book Now</a></button>
+      <button><a href="checkout.php?price=<?php echo $price?>">Book Now</a></button>
     </div>
   </div>
-   <!-- Footer Start -->
-   <footer id="footer">
+  <!-- Footer Start -->
+  <footer id="footer">
     <h1><span>T</span>ravaler</h1>
     <p>Stay up-to-date with the latest travel news, trends, and tips through
       our blog and newsletter.</p>
@@ -115,4 +128,5 @@
   </footer>
   <!-- Footer End -->
 </body>
+
 </html>

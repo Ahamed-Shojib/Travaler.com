@@ -5,6 +5,7 @@ body {
   background-color: #f8f9fa;
 }
 
+
 /* Animation Keyframes */
 @keyframes fadeIn {
   from {
@@ -73,6 +74,11 @@ section {
   margin-bottom: 30px;
 }
 
+button a {
+  text-decoration: none;
+  color: #f8f9fa;
+}
+
 section h2 {
   color: #333;
   font-size: 1.8em;
@@ -127,5 +133,6 @@ section h2 {
 }
 
 .book-now button:hover {
-  background-color: #0687b6;
+  background-color: #0aade8;
+  font: #000;
 }

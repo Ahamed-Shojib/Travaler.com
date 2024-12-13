@@ -1,3 +1,6 @@
+<?php
+include('session_user_name.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +42,12 @@
             </button>
         </div>
         <div style="text-align: right;" class="collapse navbar-collapse" id="mynavbar">
-            <a class="btn btn-outline-danger mx-2 my-2" href="user_login.php">Log In</a>
+            <?php if (!empty($user_first_name)): ?>
+            <span class="navbar-text mx-2">Hi, <?php echo $user_first_name; ?></span>
+            <a class="btn btn-outline-danger mx-2 my-2" href="../User/logout.php">Logout</a>
+            <?php else: ?>
+            <a class="btn btn-outline-primary mx-2 my-2" href="../User/user_login.php">Log In</a>
+            <?php endif; ?>
         </div>
     </nav>
     <!-- Navbar End -->
@@ -51,8 +59,11 @@
         <!-- Info Section -->
         <section class="info">
             <h2>About France</h2>
-            <p>France is a country of romance, culture, and history. Known for its iconic landmarks like the Eiffel Tower, Louvre Museum, and Notre Dame Cathedral, it offers unparalleled beauty and sophistication.
-                From the vineyards of Bordeaux to the sun-kissed beaches of the French Riviera, France has something for every traveler. Indulge in world-class cuisine, explore charming villages, and immerse yourself in the art and history of Paris, the City of Light.</p>
+            <p>France is a country of romance, culture, and history. Known for its iconic landmarks like the Eiffel
+                Tower, Louvre Museum, and Notre Dame Cathedral, it offers unparalleled beauty and sophistication.
+                From the vineyards of Bordeaux to the sun-kissed beaches of the French Riviera, France has something for
+                every traveler. Indulge in world-class cuisine, explore charming villages, and immerse yourself in the
+                art and history of Paris, the City of Light.</p>
         </section>
 
         <!-- Map Section -->
