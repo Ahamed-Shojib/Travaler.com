@@ -24,26 +24,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>India Travel Details</title>
   <!-- Favicon -->
   <link rel="icon" href="images/Tour-Logo.png">
-  
+
   <!-- Bootstrap Link -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    crossorigin="anonymous">
+
   <!-- Font Awesome Cdn -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-  
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/StyleX.css">
 </head>
+
 <body>
   <!-- Navbar Start -->
   <nav class="navbar navbar-expand-lg" id="navbar">
@@ -54,26 +57,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
       </button>
     </div>
     <div style="text-align: right;" class="collapse navbar-collapse" id="mynavbar">
-      <a class="btn btn-outline-danger mx-2 my-2" href="user_login.php">Log In</a>
+      <a class="btn btn-outline-primary mx-2 my-2" href="user_login.php">Log In</a>
     </div>
   </nav>
   <!-- Navbar End -->
-  
+
   <header class="head_img_india">
     <h1>Explore India</h1>
   </header>
-  
+
   <div class="containerX">
     <!-- Info Section -->
     <section class="info">
       <h2>About India</h2>
-      <p>India captivates with its vibrant culture, spiritual depth, and breathtaking landscapes. Explore majestic landmarks such as the Taj Mahal, Red Fort, and Jaipur's palaces...</p>
+      <p>India captivates with its vibrant culture, spiritual depth, and breathtaking landscapes. Explore majestic
+        landmarks such as the Taj Mahal, Red Fort, and Jaipur's palaces...</p>
     </section>
 
     <!-- Map Section -->
     <section class="map">
       <h2>Location</h2>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30767694.118830837!2d60.92944751922805!3d19.720199483373122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791%3A0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sbd!4v1733083452437!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30767694.118830837!2d60.92944751922805!3d19.720199483373122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791%3A0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sbd!4v1733083452437!5m2!1sen!2sbd"
+        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
     <!-- Price Section -->
@@ -97,8 +104,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
     <form method="POST">
       <input type="hidden" name="price" value="45000">
       <div class="book-now">
-        <button id="addToCartButton" type="submit" name="add_to_cart" class="btn btn-warning">Add to Cart</button>
-        <button class="btn btn-outline-success"><a style="text-decoration: none;color:aliceblue;" href="cart.php">View Cart</a></button>
+        <button id="addToCartButton" type="submit" name="add_to_cart" class="btn btn-primary">Add to Cart</button>
+        <button class="btn btn-outline-success"><a style="text-decoration: none;color:aliceblue;" href="cart.php">View
+            Cart</a></button>
       </div>
     </form>
 
@@ -124,21 +132,24 @@ document.getElementById('addToCartButton').onclick = function() {
     </div>
   </div> -->
 
-  <!-- Footer Start -->
-  <footer id="footer">
-    <h1><span>T</span>ravaler</h1>
-    <p>Stay up-to-date with the latest travel news...</p>
-    <div class="social-links">
-      <a href="https://www.facebook.com/ahamedshojib69"><i class="fa-brands fa-facebook"></i></a>
-      <a href="https://www.linkedin.com/in/mehedi-hasan-shojib"><i class="fa-brands fa-linkedin"></i></a>
-      <a href="https://github.com/Ahamed-Shojib"><i class="fa-brands fa-github"></i></a>
-      <a href="https://www.youtube.com/channel/UCnqSrFTK2JLRhHWlPkVTTkw"><i class="fa-brands fa-youtube"></i></a>
-    </div>
-    <div class="copyright">
-      <p><sup>&copy;</sup> 2024 Copyright || All Rights Reserved</p>
-    </div>
-  </footer>
-  <!-- Footer End -->
+    <!-- Footer Start -->
+    <footer id="footer">
+      <h1>
+        <span id="logo_T">T</span>ravaler
+      </h1>
+      <p>Stay up-to-date with the latest travel news...</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/ahamedshojib69"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/in/mehedi-hasan-shojib"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/Ahamed-Shojib"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.youtube.com/channel/UCnqSrFTK2JLRhHWlPkVTTkw"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+      <div class="copyright">
+        <p><sup>&copy;</sup> 2024 Copyright || All Rights Reserved</p>
+      </div>
+    </footer>
+    <!-- Footer End -->
 
 </body>
+
 </html>

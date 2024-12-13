@@ -54,19 +54,10 @@ if(isset($_POST['submit'])){
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg" id="navbar">
         <div class="container" id="nav_bar">
-            <a class="navbar-brand" href="index.php" id="logo"><span>T</span>ravaler</a>
+            <a class="navbar-brand" href="../index.php" id="logo"><span>T</span>ravaler</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span><i class="fa-solid fa-bars"></i></span>
             </button>
-            <div class="collapse navbar-collapse" id="mynavbar">
-                <ul class="navbar-nav me-auto">
-
-
-                </ul>
-
-                <a class="btn btn-outline-danger mx-2 my-2" href="user_login.php">Log
-                    In</a>
-            </div>
         </div>
     </nav>
     <!-- Navbar End -->
@@ -86,7 +77,7 @@ if(isset($_POST['submit'])){
             <div class="col-md-7 mx-auto">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="text-center my-2"><a href="index.php">Sign Up</a></h4>
+                        <h4 class="text-center my-2"><a href="../index.php">Sign Up</a></h4>
                     </div>
                     <form action="#" method="post">
                         <label class="my-2" for="first-name">First
@@ -116,11 +107,12 @@ if(isset($_POST['submit'])){
                         <input class="form-control" type="password" name="confirm_password" id="confirm-password"
                             placeholder="* * * * * * * * *" required>
 
-                        <input class="btn btn-outline-warning my-3" type="submit" name="submit" onclick="success_msg()"
+                        <input class="btn btn-outline-primary my-3" type="submit" name="submit" onclick="success_msg()"
                             value="Sign Up">
 
-                        <label class="my-4 mx-2 text-warning" for="login">Already have an account?<a
-                                style="margin-left:5px; color: #ffa500;" href="user_login.php"> Log In</a></label>
+                        <label class="my-4 mx-2 text-primary" for="login">Already have an account?<a class="text-danger"
+                                style="margin-left:5px; color:rgb(13, 129, 197);" href="user_login.php"> Log
+                                In</a></label>
                     </form>
                 </div>
             </div>
@@ -128,7 +120,9 @@ if(isset($_POST['submit'])){
     </div>
     <!-- Footer Start -->
     <footer id="footer">
-        <h1><span>T</span>ravaler</h1>
+        <h1>
+            <span id="logo_T">T</span>ravaler
+        </h1>
         <p>Stay up-to-date with the latest travel news, trends, and tips through
             our blog and newsletter.</p>
         <div class="social-links">

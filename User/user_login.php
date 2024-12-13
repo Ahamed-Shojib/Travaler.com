@@ -65,7 +65,7 @@ if (isset($_POST['submit'])) {
       <div class="col-md-6 mx-auto">
         <div class="card">
           <div class="card-header">
-            <h4 class="text-center my-2"><a href="index.php">Log In</a></h4>
+            <h4 class="text-center my-2"><a href="../index.php">Log In</a></h4>
           </div>
           <form action="#" method="post">
             <label class="my-2" for="mail">Email :</label>
@@ -73,8 +73,9 @@ if (isset($_POST['submit'])) {
             <label class="my-2" for="password">Password
               :</label><br>
             <input class="form-control" type="password" name="password" id="password" placeholder="* * * * * * * * *">
-            <input class="btn btn-outline-warning my-3" type="submit" name="submit" value="Log In">
-            <label class="my-4 mx-2" for="forget">Are You New?<a style="margin-left:5px;" href="user_signup.php">Sign
+            <input class="btn btn-outline-primary my-3" type="submit" name="submit" value="Log In">
+            <label class="my-4 mx-2 text-primary" for="forget">Are You New?<a style="margin-left:5px;"
+                class="text-danger" href="user_signup.php">Sign
                 Up</a></label>
 
             <label class="d-block mx-auto text-danger">
@@ -86,7 +87,9 @@ if (isset($_POST['submit'])) {
   </div>
   <!-- Footer Start -->
   <footer id="footer">
-    <h1><span>T</span>ravaler</h1>
+    <h1>
+      <span id="logo_T">T</span>ravaler
+    </h1>
     <p>Stay up-to-date with the latest travel news, trends, and tips through
       our blog and newsletter.</p>
     <div class="social-links">

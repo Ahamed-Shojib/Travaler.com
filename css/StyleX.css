@@ -1,122 +1,131 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa;
-  }
-   /* Animation Keyframes */
-   @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
 
-  .head_img_india{
-    background-image: url('https://www.revv.co.in/blogs/wp-content/uploads/2019/11/self-drive-car-rental-delhi-gurgaon-noida_revv-blog.jpg');
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  .head_img_italy{
-    background-image: url('https://www.theglobetrottingdetective.com/wp-content/uploads/2022/06/famous-landmarks-in-italy-bridge-rialto-on-grand-canal.jpg');
-  }
-  .head_img_USA {
-    background-image: url('https://www.shutterstock.com/image-photo/statue-liberty-front-manhattan-skyline-600nw-1564344640.jpg');
-  }
-  .head_img_france {
-    background-image: url('https://media1.thrillophilia.com/filestore/sv8cmj5yufx5ht7qkjxaq3dkc9gx_1579345955_Eiffel_Tower.jpg?w=753&h=450&dpr=2.0');
-  }
-  .head_img_uk {
-    background-image: url('https://media1.thrillophilia.com/filestore/olivvmzz8a1t6iap996tgdlmdmvh_London-Eye-2009.JPG?w=753&h=450&dpr=2.0');
-  }
-  .head_img_pakistan {
-    background-image: url('https://images.travelandleisureasia.com/wp-content/uploads/sites/3/2023/11/27171455/skardu.jpg');
-  }
-  header {
-    background-size: cover;
-    background-position: center;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    text-align: center;
-    animation: fadeIn 2s ease-out;
-  }
+}
 
-  header h1 {
-    font-size: 3em;
-    margin: 0;
-  }
+.head_img_india {
+  background-image: url('https://www.revv.co.in/blogs/wp-content/uploads/2019/11/self-drive-car-rental-delhi-gurgaon-noida_revv-blog.jpg');
+}
 
-  .containerX {
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+.head_img_italy {
+  background-image: url('https://www.theglobetrottingdetective.com/wp-content/uploads/2022/06/famous-landmarks-in-italy-bridge-rialto-on-grand-canal.jpg');
+}
 
-  section {
-    margin-bottom: 30px;
-  }
+.head_img_USA {
+  background-image: url('https://www.shutterstock.com/image-photo/statue-liberty-front-manhattan-skyline-600nw-1564344640.jpg');
+}
 
-  section h2 {
-    color: #333;
-    font-size: 1.8em;
-    border-bottom: 2px solid #f7b733;
-    display: inline-block;
-    margin-bottom: 10px;
-  }
+.head_img_france {
+  background-image: url('https://media1.thrillophilia.com/filestore/sv8cmj5yufx5ht7qkjxaq3dkc9gx_1579345955_Eiffel_Tower.jpg?w=753&h=450&dpr=2.0');
+}
 
-  .info p, .activity p {
-    line-height: 1.6;
-    color: #555;
-  }
+.head_img_uk {
+  background-image: url('https://media1.thrillophilia.com/filestore/olivvmzz8a1t6iap996tgdlmdmvh_London-Eye-2009.JPG?w=753&h=450&dpr=2.0');
+}
 
-  .map iframe {
-    width: 100%;
-    height: 400px;
-    border: none;
-    border-radius: 10px;
-  }
+.head_img_pakistan {
+  background-image: url('https://images.travelandleisureasia.com/wp-content/uploads/sites/3/2023/11/27171455/skardu.jpg');
+}
 
-  .price {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #333;
-    margin: 10px 0;
-  }
+header {
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  animation: fadeIn 2s ease-out;
+}
 
-  .activity ul {
-    list-style: disc;
-    padding-left: 20px;
-  }
+header h1 {
+  font-size: 3em;
+  margin: 0;
+}
 
-  .activity ul li {
-    margin-bottom: 8px;
-  }
+.containerX {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-  .book-now {
-    text-align: center;
-    margin-top: 20px;
-  }
+section {
+  margin-bottom: 30px;
+}
 
-  .book-now button {
-    padding: 15px 30px;
-    font-size: 1.2em;
-    background-color: #f7b733;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-transform: uppercase;
-  }
+section h2 {
+  color: #333;
+  font-size: 1.8em;
+  border-bottom: 2px solid #0687b6;
+  display: inline-block;
+  margin-bottom: 10px;
+}
 
-  .book-now button:hover {
-    background-color: #e0a626;
-  }
+.info p,
+.activity p {
+  line-height: 1.6;
+  color: #555;
+}
+
+.map iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+  border-radius: 10px;
+}
+
+.price {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+}
+
+.activity ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.activity ul li {
+  margin-bottom: 8px;
+}
+
+.book-now {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.book-now button {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  background-color: #0687b6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.book-now button:hover {
+  background-color: #0687b6;
+}

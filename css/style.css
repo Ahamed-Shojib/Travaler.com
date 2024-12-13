@@ -7,7 +7,7 @@
     scroll-behavior: smooth;
     transition: 0.6s;
     font-family: 'Lato', sans-serif;
-    
+
 }
 
 /* Navbar Start */
@@ -26,12 +26,16 @@
     margin-bottom: 5px;
 }
 
+#footer #logo_T {
+    color: #056aa5;
+}
+
 #logo span {
-    color: #ffa500;
+    color: #056aa5;
 }
 
 .navbar-toggler span {
-    color: #ffa500;
+    color: #056aa5;
 }
 
 .navbar-nav {
@@ -50,7 +54,7 @@
 }
 
 .nav-item .nav-link:hover {
-    background: #ffa500;
+    background: #056aa5;
     color: white;
 }
 
@@ -92,7 +96,7 @@
 
 .changecontent::after {
     content: ' ';
-    color: #ffa500;
+    color: #cc0a10;
     transition: 0.5s ease;
     text-shadow: 0px 1px 1px black;
     animation: changetext 10s infinite linear;
@@ -154,7 +158,7 @@
 }
 
 .home .content a:hover {
-    background: #ffa500;
+    background: #056aa5;
     color: white;
 }
 
@@ -194,7 +198,7 @@
 }
 
 .main-text h1 span {
-    color: #ffa500;
+    color: #056aa5;
 }
 
 .book img {
@@ -214,7 +218,7 @@
 }
 
 label {
-    color: rgb(17, 143, 143);
+    color: rgb(4, 146, 146);
     font-size: 15px;
     font-weight: bold;
 }
@@ -271,7 +275,7 @@ label {
 }
 
 .main-txt h1 span {
-    color: #ffa500;
+    color: #08abcc;
 }
 
 .packages .card {
@@ -299,7 +303,7 @@ label {
 }
 
 .checked {
-    color: #ffa500;
+    color: #068eaa;
 }
 
 .star i {
@@ -342,7 +346,7 @@ label {
 .services .card i {
     font-size: 80px;
     text-align: center;
-    color: #ffa500;
+    color: #0688a2;
     margin-top: 20px;
 }
 
@@ -449,7 +453,7 @@ label {
 }
 
 #footer h1 span {
-    color: #ffa500;
+    color: #067a92;
 }
 
 .social-links i {
@@ -465,7 +469,7 @@ label {
 }
 
 .social-links i:hover {
-    background: #ffa500;
+    background: #0488a3;
 }
 
 /* Footer End */
@@ -501,7 +505,7 @@ label {
     font-weight: 500;
     text-decoration: none;
     font-size: xx-large;
-    color: #f19f07;
+    color: #128bd1;
     text-shadow: 3px 1px 8px #063d64;
     font-family: fantasy;
     letter-spacing: 3px;
@@ -515,7 +519,7 @@ label {
 }
 
 #log a {
-    color: #ffa500;
+    color: #076093;
     margin-left: 20px;
 }
 
@@ -555,7 +559,7 @@ label {
     text-decoration: none;
     font-weight: 500;
     font-size: xx-large;
-    color: #f19f07;
+    color: #128bd1;
     text-shadow: 3px 1px 8px #063d64;
     font-family: fantasy;
     letter-spacing: 3px;
@@ -572,12 +576,13 @@ label {
 
 
 .quick_link li a {
-    color: #007bff;
+    color: #0f84c8;
     text-decoration: none;
 }
 
 .quick_link li a:hover {
-    color: #f19f07;
+    color: #0f84c8;
+    ;
 }
 
 /* Dashboard */

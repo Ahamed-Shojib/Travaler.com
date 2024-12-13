@@ -84,7 +84,7 @@ if (isset($_SESSION['user_id'])) {
         <span class="navbar-text mx-2">Hi, <?php echo $user_first_name; ?></span>
         <a class="btn btn-outline-danger mx-2 my-2" href="User/logout.php">Logout</a>
         <?php else: ?>
-        <a class="btn btn-outline-danger mx-2 my-2" href="User/user_login.php">Log In</a>
+        <a class="btn btn-outline-primary mx-2 my-2" href="User/user_login.php">Log In</a>
         <?php endif; ?>
       </div>
     </div>
@@ -103,7 +103,7 @@ if (isset($_SESSION['user_id'])) {
         any questions or need assistance, our support team is always here to
         help.
       </p>
-      <a class="btn btn-outline-warning" href="#book">Book Place</a>
+      <a class="btn btn-outline-primary" href="#book">Book Place</a>
     </div>
   </div>
   <!-- Home Section End -->
@@ -144,9 +144,9 @@ if (isset($_SESSION['user_id'])) {
 
               <?php
               if (isset($_SESSION['user_id'])) {
-                echo '<input type="submit" value="Book Now" class="submit btn btn-outline-warning" required>';
+                echo '<input type="submit" value="Book Now" class="submit btn btn-outline-primary" required>';
               } else {
-                echo '<a class="btn btn-outline-danger mx-2 my-2" href="User/user_login.php">Log In</a>';
+                echo '<a class="btn btn-outline-primary mx-2 my-2" href="User/user_login.php">Log In</a>';
               }
               ?>
             </form>
@@ -507,7 +507,7 @@ if (isset($_SESSION['user_id'])) {
 
         <div class="col-md-6 py-3 py-md-0">
           <h2>How Travel Agency Work</h2>
-          <p style="text-align: justify;">At <span class="text-warning h4">Travaler</span>, we
+          <p style="text-align: justify;">At <span class="text-info h4">Travaler</span>, we
             are committed to
             promoting
             sustainable travel.
@@ -521,7 +521,7 @@ if (isset($_SESSION['user_id'])) {
             content, special offers, and a community of passionate travelers
             ready to share the journey with you. Your adventure starts
             here!</p>
-          <a class="about-btn btn btn-outline-warning">Read
+          <a class="about-btn btn btn-outline-primary">Read
             More</a>
         </div>
 
@@ -533,7 +533,9 @@ if (isset($_SESSION['user_id'])) {
 
   <!-- Footer Start -->
   <footer id="footer">
-    <h1><span>T</span>ravaler</h1>
+    <h1>
+      <span id="logo_T">T</span>ravaler
+    </h1>
     <p>Stay up-to-date with the latest travel news, trends, and tips through
       our blog and newsletter.</p>
     <div class="social-links">
