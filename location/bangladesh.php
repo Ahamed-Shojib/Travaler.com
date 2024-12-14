@@ -42,10 +42,15 @@ $trending_result = $conn->query($trending_query);
                         <?php } ?>
                         <div class="row">
                             <div class="col-md-6 mx-auto my-2 p-1">
-                                <img src="<?php echo $row['image']; ?>" class="d-block rounded-3 w-100" height="400px"
-                                    alt="<?php echo $row['name']; ?>">
-                                <h5><?php echo $row['name']; ?></h5>
-                                <p><?php echo $row['properties']; ?> properties</p>
+                                <div class="card">
+                                    <img src="<?php echo $row['image']; ?>" class="d-block rounded w-100" height="400px"
+                                        alt="<?php echo $row['name']; ?>">
+                                    <h4 class="px-2 mt-2 text-info"><?php echo $row['name']; ?></h4>
+
+                                    <p class="px-2 text-success "><?php echo $row['properties']; ?>
+                                        Visiting Places
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
