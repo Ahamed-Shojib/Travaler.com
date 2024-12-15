@@ -1,7 +1,7 @@
 <?php
 ini_set('display_errors', 0);
-//if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //$city = htmlspecialchars($_POST['city']);
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $city = htmlspecialchars($_POST['city']);
     $apiKey = 'c17ffc712fdfa4994858de7a45fd8986';
 
     $apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" . urlencode($city) . "&appid=" . $apiKey . "&units=metric";
@@ -31,7 +31,7 @@ ini_set('display_errors', 0);
     } else {
         $error = "Could not retrieve weather data. Please check the city name.";
     }
-//}
+}
 ?>
 
 <!DOCTYPE html>
@@ -45,11 +45,17 @@ ini_set('display_errors', 0);
 </head>
 
 <body class="bg-light">
-    <div class="container pb-4">
+    <div class="container py-5">
         <div class="card shadow p-4">
+            <h1 class="text-center mb-4">Daily Weather Forecast</h1>
+            <form method="POST" class="d-flex justify-content-center mb-4">
+                <input type="text" name="city" class="form-control w-50 me-2" placeholder="Enter city name" required>
+                <button type="submit" class="btn btn-outline-warning">Get Forecast</button>
+            </form>
+
             <?php if (isset($forecast)) { ?>
-            <!-- <h3 class="text-center">Location: <?php echo $locationName; ?></h3> -->
-            <div class="row row-cols-1 row-cols-md-6 g-4 ">
+            <h2 class="text-center">Location: <?php echo $locationName; ?></h2>
+            <div class="row row-cols-1 row-cols-md-6 g-4 mt-4">
                 <?php foreach ($forecast as $day) { ?>
                 <div class="col">
                     <div class="card h-100 text-center shadow-sm">

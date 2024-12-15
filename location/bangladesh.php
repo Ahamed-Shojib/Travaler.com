@@ -45,7 +45,7 @@ $trending_result = $conn->query($trending_query);
                                 <div class="card">
                                     <img src="<?php echo $row['image']; ?>" class="d-block rounded w-100" height="400px"
                                         alt="<?php echo $row['name']; ?>">
-                                    <h4 class="px-2 mt-2 text-info"><?php echo $row['name']; ?></h4>
+                                    <h4 class="px-2 mt-2 text-warning"><?php echo $row['name']; ?></h4>
 
                                     <p class="px-2 text-success "><?php echo $row['properties']; ?>
                                         Visiting Places
@@ -80,6 +80,9 @@ $trending_result = $conn->query($trending_query);
                             alt="<?php echo $row['name']; ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $row['name']; ?></h5>
+                            <h6 class="card-title"><a class="btn btn-outline-success"
+                                    href="<?php echo $row['links'];?>">Visit Place</a>
+                            </h6>
                         </div>
                     </div>
                 </div>
@@ -87,7 +90,8 @@ $trending_result = $conn->query($trending_query);
             </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
+        </script>
 </body>
 
 </html>
