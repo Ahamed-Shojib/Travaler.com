@@ -45,6 +45,7 @@ ini_set('display_errors', 0);
 </head>
 
 <body class="bg-light">
+    <h3>Weather Forecast of <?php echo $city;?> </h3>
     <div class="container pb-4">
         <div class="card shadow p-4">
             <?php if (isset($forecast)) { ?>

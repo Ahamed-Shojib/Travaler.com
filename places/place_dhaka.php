@@ -1,11 +1,11 @@
 <?php
 error_reporting(0);
-include('re_use/session_user_name.php');
-include('re_use/link.php');
+include('../re_use/session_user_name.php');
+include('../re_use/link.php');
 $packages = [
-    ["name" => "3 Days & 4 Nights", "price" => 10000, "image" => "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/39/9d/0a.jpg", "description" => "Lalbag Fort,Dhaka"],
-    ["name" => "5 Days & 6 Nights", "price" => 15000, "image" => "https://fantasykingdom.net/wp-content/uploads/2023/01/Details-to-Know-Before-Coming-to-Fantasy-Kingdom.webp", "description" => "Fantasy kingdom,Ashulia"],
-    ["name" => "10 Days & 11 Nights", "price" => 20000, "image" => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXyMkHKEpQefaFhjUyM2hHB4PoZFFywv3unA&s", "description" => "Nation Zoo,Mirpur"]
+    ["name" => "3 Days & 4 Nights","place" => "Lalbag Fort,Dhaka", "price" => 10000, "image" => "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/39/9d/0a.jpg"],
+    ["name" => "5 Days & 6 Nights", "price" => 15000, "image" => "https://fantasykingdom.net/wp-content/uploads/2023/01/Details-to-Know-Before-Coming-to-Fantasy-Kingdom.webp"],
+    ["name" => "10 Days & 11 Nights","place" => "Nation Zoo,Mirpur", "price" => 20000, "image" => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXyMkHKEpQefaFhjUyM2hHB4PoZFFywv3unA&s", ]
 ];
 
 $events = [
@@ -31,37 +31,42 @@ $feedbacks = [
     ["name" => "Sara Ahmed", "review" => "Loved the cultural night in Lahore. Highly recommended!", "rating" => 4.5],
     ["name" => "Usman Farooq", "review" => "Fairy Meadows is a must-visit. Great service!", "rating" => 5]
 ];
+// Check if the cart is initialized
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+  }
+  
+  // Add to cart functionality
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart']) && isset($_SESSION['user_id'])) {
+    $item = [
+      'name' => $_POST['package_name'],
+      'place' => $_POST['package_place'],
+      'price' =>  $_POST['package_price'],
+      'quantity' => $_POST['package_quantity'],
+      'date'=> $_POST['package_date']
+    ];
+  
+    // Add the item to the cart
+    $_SESSION['cart'][] = $item;
+    $add_message = "Item added to cart successfully.";
+    echo "<script>alert('$add_message');</script>";
+  }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pakistan Tourism</title>
+    <title>Sylhet Tourism</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg" id="navbar">
-        <div class="container" id="nav_bar">
-            <a class="navbar-brand" href="../index.php" id="logo"><span>T</span>ravaler</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span><i class="fa-solid fa-bars"></i></span>
-            </button>
-        </div>
-        <div style="text-align: right;" class="collapse navbar-collapse" id="mynavbar">
-            <?php if (!empty($user_first_name)): ?>
-            <span class="navbar-text mx-2">Hi, <?php echo $user_first_name; ?></span>
-            <a class="btn btn-outline-danger mx-2 my-2" href="../User/logout.php">Logout</a>
-            <?php else: ?>
-            <a class="btn btn-outline-primary mx-2 my-2" href="../User/user_login.php">Log In</a>
-            <?php endif; ?>
-        </div>
-    </nav>
-    <!-- Navbar End -->
+
+    <!--Nev-->
+    <?php include('../re_use/nev.php');?>
+    <!--Nev-->
     <div class="container mt-5">
         <!-- Packages Section -->
         <section class="mb-5">
@@ -73,22 +78,32 @@ $feedbacks = [
                         <img width="250px" height="250px" src="<?php echo $package['image']; ?>" class="card-img-top"
                             alt="<?php echo $package['name']; ?>">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $package['name']; ?></h5>
-                            <p class="card-text">Price: BDT <?php echo number_format($package['price']); ?></p>
-                            <p class="card-text">Destination: <?php echo $package['description']; ?></p>
-                            <a href="cart.php?package=<?php echo urlencode($package['name']); ?>&price=<?php echo $package['price']; ?>"
-                                class="btn btn-primary">Book Now</a>
+                            <h5 class="card-title"><b><?php echo $package['name']; ?></b></h5>
+                            <p class="card-text"><b>Price: </b><?php echo number_format($package['price']); ?> BDT
+                            </p>
+                            <p class="card-text"><b>Destination: </b><?php echo $package['place']; ?></p>
+                            <form method="POST">
+                                <input type="hidden" name="package_name" value="<?php echo $package['name']; ?>">
+                                <input type="hidden" name="package_place" value="<?php echo $package['place']; ?>">
+                                <input type="hidden" name="package_price" value="<?php echo $package['price']; ?>">
+                                <input type="hidden" name="package_quantity" value="1" min="1"
+                                    class="form-control mb-2">
+                                <input class="btn btn-outline-success" type="date" name="package_date" value="date"
+                                    required>
+                                <button type="submit" name="add_to_cart" class="btn btn-outline-primary">Add
+                                    to Cart</button>
+                            </form>
                         </div>
                     </div>
                 </div>
                 <?php endforeach; ?>
             </div>
         </section>
-        <h3>Weather Forecast</h3>
+
         <!-- Weather Section -->
         <?php
             $city='Dhaka';
-            include('weather.php');
+            include('../re_use/weather.php');
         ?>
         <!-- Weather Section -->
         <!-- Events Section -->
@@ -194,7 +209,7 @@ $feedbacks = [
             </div>
         </section>
     </div>
-    <?php include('re_use/footer.php');?>
+    <?php include('../re_use/footer.php');?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js">
     </script>
 </body>

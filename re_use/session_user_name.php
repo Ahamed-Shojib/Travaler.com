@@ -1,5 +1,6 @@
 <?php 
 session_start();
+error_reporting(0);
 $user_first_name = ''; // Default value
 if (isset($_SESSION['user_id'])) {
   $user_id = $_SESSION['user_id'];
@@ -11,4 +12,5 @@ if (isset($_SESSION['user_id'])) {
     $user_first_name = $user['first_name'];
   }
   $conn->close();
+
 }?>

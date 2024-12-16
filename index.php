@@ -47,10 +47,11 @@ include('re_use/session_user_name.php');
           <?php endif; ?>
         </ul>
         <form class="d-flex">
-          <input class="form-control me-2" type="text" placeholder="Search">
-          <button class="btn btn-outline-warning" type="button">Search</button>
+          <input class="form-control me-1" type="text" placeholder="Search">
+          <button class="btn btn-outline-success" type="button"><i class="bi bi-search"></i></button>
         </form>
         <?php if(!empty($user_first_name)): ?>
+        <a href="cart/cart.php" class="btn btn-outline-warning mx-2 my-2"><i class="bi p-2 bi-cart"></i></a>
         <span class="navbar-text mx-2">Hi, <?php echo $user_first_name; ?></span>
         <a class="btn btn-outline-danger mx-2 my-2" href="User/logout.php">Logout</a>
         <?php else: ?>
@@ -127,10 +128,10 @@ include('re_use/session_user_name.php');
     </div>
   </section>
   <!-- Section Book End -->
-
+  <section id="packages"></section>
   <?php require('./location/bangladesh.php'); ?>
   <!-- Section Packages Start -->
-  <section class="packages" id="packages">
+  <section class="packages">
     <div class="container">
 
       <div class="main-txt">
